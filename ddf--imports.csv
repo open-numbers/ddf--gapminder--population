@@ -1,0 +1,2 @@
+namespace,dataset,type,filter,comment
+http://www.opennumbers.org,ddf-gapminder-ontology,*,*,"Anything mentioned but not defined here, is from Gapminder Ontology."
