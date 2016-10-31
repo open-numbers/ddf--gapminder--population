@@ -1,0 +1,10 @@
+concept,name,concept_type,domain,drill_up
+population,Population,measure,,
+name,Name,string,,
+year,Year,time,,
+domain,Domain,string,,
+drill_up,Drill up,string,,
+geo,Geographic locations,entity_domain,,
+world_4region,World regions,entity_set,geo,"[""global""]"
+country,Country,entity_set,geo,"[""world_4region""]"
+global,global,entity_set,geo,

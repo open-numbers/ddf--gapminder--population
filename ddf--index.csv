@@ -1,0 +1,11 @@
+key,value,file
+concept,name,ddf--concepts.csv
+concept,concept_type,ddf--concepts.csv
+concept,domain,ddf--concepts.csv
+concept,drill_up,ddf--concepts.csv
+"geo,year",population,ddf--datapoints--population--by--country--year.csv
+"global,year",population,ddf--datapoints--population--by--global--year.csv
+"world_4region,year",population,ddf--datapoints--population--by--world_4region--year.csv
+geo,name,ddf--entities--geo--country.csv
+geo,name,ddf--entities--geo--global.csv
+geo,name,ddf--entities--geo--world_4region.csv
