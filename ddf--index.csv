@@ -1,0 +1,6 @@
+key,value,file
+concept,name,ddf--concepts.csv
+concept,concept_type,ddf--concepts.csv
+concept,indicator_url,ddf--concepts.csv
+"country,year",population,ddf--datapoints--population--by--country--year.csv
+country,name,ddf--entities--country.csv

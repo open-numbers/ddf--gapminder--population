@@ -1,0 +1,6 @@
+concept,name,concept_type,indicator_url
+name,Name,string,
+year,Time,time,
+population,"Population, total",measure,https://github.com/open-numbers/ddf--gapminder--population
+country,Country,entity_domain,
+indicator_url,Indicator URL,string,
