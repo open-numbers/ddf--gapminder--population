@@ -13,16 +13,358 @@
                         "name": "concept"
                     },
                     {
-                        "name": "name"
+                        "name": "color"
                     },
                     {
                         "name": "concept_type"
                     },
                     {
+                        "name": "domain"
+                    },
+                    {
+                        "name": "drill_up"
+                    },
+                    {
                         "name": "indicator_url"
+                    },
+                    {
+                        "name": "name"
+                    },
+                    {
+                        "name": "scales"
+                    },
+                    {
+                        "name": "tags"
+                    },
+                    {
+                        "name": "unit"
                     }
                 ],
                 "primaryKey": "concept"
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--age--g77_and_oecd_countries--year.csv",
+            "name": "ddf--datapoints--population--by--age--g77_and_oecd_countries--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "g77_and_oecd_countries"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "age",
+                    "g77_and_oecd_countries",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--age--gender--g77_and_oecd_countries--year.csv",
+            "name": "ddf--datapoints--population--by--age--gender--g77_and_oecd_countries--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "g77_and_oecd_countries"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "age",
+                    "gender",
+                    "g77_and_oecd_countries",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--age--gender--income_groups--year.csv",
+            "name": "ddf--datapoints--population--by--age--gender--income_groups--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "income_groups"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "age",
+                    "gender",
+                    "income_groups",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--age--gender--landlocked--year.csv",
+            "name": "ddf--datapoints--population--by--age--gender--landlocked--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "landlocked"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "age",
+                    "gender",
+                    "landlocked",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--age--gender--main_religion_2008--year.csv",
+            "name": "ddf--datapoints--population--by--age--gender--main_religion_2008--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "main_religion_2008"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "age",
+                    "gender",
+                    "main_religion_2008",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--age--gender--world_4region--year.csv",
+            "name": "ddf--datapoints--population--by--age--gender--world_4region--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "world_4region"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "age",
+                    "gender",
+                    "world_4region",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--age--gender--world_6region--year.csv",
+            "name": "ddf--datapoints--population--by--age--gender--world_6region--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "world_6region"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "age",
+                    "gender",
+                    "world_6region",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--age--income_groups--year.csv",
+            "name": "ddf--datapoints--population--by--age--income_groups--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "income_groups"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "age",
+                    "income_groups",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--age--landlocked--year.csv",
+            "name": "ddf--datapoints--population--by--age--landlocked--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "landlocked"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "age",
+                    "landlocked",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--age--main_religion_2008--year.csv",
+            "name": "ddf--datapoints--population--by--age--main_religion_2008--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "main_religion_2008"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "age",
+                    "main_religion_2008",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--age--world_4region--year.csv",
+            "name": "ddf--datapoints--population--by--age--world_4region--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "world_4region"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "age",
+                    "world_4region",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--age--world_6region--year.csv",
+            "name": "ddf--datapoints--population--by--age--world_6region--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "world_6region"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "age",
+                    "world_6region",
+                    "year"
+                ]
             }
         },
         {
@@ -47,18 +389,546 @@
             }
         },
         {
-            "path": "ddf--entities--country.csv",
-            "name": "ddf--entities--country",
+            "path": "ddf--datapoints--population--by--g77_and_oecd_countries--year.csv",
+            "name": "ddf--datapoints--population--by--g77_and_oecd_countries--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "g77_and_oecd_countries"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "g77_and_oecd_countries",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--global--year--age--gender.csv",
+            "name": "ddf--datapoints--population--by--global--year--age--gender",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "global"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "global",
+                    "year",
+                    "age",
+                    "gender"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--global--year--age.csv",
+            "name": "ddf--datapoints--population--by--global--year--age",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "global"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "global",
+                    "year",
+                    "age"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--income_groups--year.csv",
+            "name": "ddf--datapoints--population--by--income_groups--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "income_groups"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "income_groups",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--landlocked--year.csv",
+            "name": "ddf--datapoints--population--by--landlocked--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "landlocked"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "landlocked",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--main_religion_2008--year.csv",
+            "name": "ddf--datapoints--population--by--main_religion_2008--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "main_religion_2008"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "main_religion_2008",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--world_4region--year.csv",
+            "name": "ddf--datapoints--population--by--world_4region--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "world_4region"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "world_4region",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--world_6region--year.csv",
+            "name": "ddf--datapoints--population--by--world_6region--year",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "world_6region"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "world_6region",
+                    "year"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--year--global.csv",
+            "name": "ddf--datapoints--population--by--year--global",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "global"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "year",
+                    "global"
+                ]
+            }
+        },
+        {
+            "path": "ddf--entities--age.csv",
+            "name": "ddf--entities--age",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "name"
+                    }
+                ],
+                "primaryKey": "age"
+            }
+        },
+        {
+            "path": "ddf--entities--gender.csv",
+            "name": "ddf--entities--gender",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "name"
+                    }
+                ],
+                "primaryKey": "gender"
+            }
+        },
+        {
+            "path": "ddf--entities--geo--country.csv",
+            "name": "ddf--entities--geo--country",
             "schema": {
                 "fields": [
                     {
                         "name": "country"
                     },
                     {
+                        "name": "gwid"
+                    },
+                    {
                         "name": "name"
+                    },
+                    {
+                        "name": "world_6region"
+                    },
+                    {
+                        "name": "income_groups"
+                    },
+                    {
+                        "name": "landlocked"
+                    },
+                    {
+                        "name": "g77_and_oecd_countries"
+                    },
+                    {
+                        "name": "main_religion_2008"
+                    },
+                    {
+                        "name": "gapminder_list"
+                    },
+                    {
+                        "name": "alternative_1"
+                    },
+                    {
+                        "name": "alternative_2"
+                    },
+                    {
+                        "name": "alternative_3"
+                    },
+                    {
+                        "name": "alternative_4_cdiac"
+                    },
+                    {
+                        "name": "pandg"
+                    },
+                    {
+                        "name": "god_id"
+                    },
+                    {
+                        "name": "alt_5"
+                    },
+                    {
+                        "name": "upper_case_name"
+                    },
+                    {
+                        "name": "iso3166_1_alpha2"
+                    },
+                    {
+                        "name": "iso3166_1_alpha3"
+                    },
+                    {
+                        "name": "iso3166_1_numeric"
+                    },
+                    {
+                        "name": "iso3166_2"
+                    },
+                    {
+                        "name": "unicode_region_subtag"
+                    },
+                    {
+                        "name": "arb1"
+                    },
+                    {
+                        "name": "arb2"
+                    },
+                    {
+                        "name": "arb3"
+                    },
+                    {
+                        "name": "arb4"
+                    },
+                    {
+                        "name": "arb5"
+                    },
+                    {
+                        "name": "arb6"
+                    },
+                    {
+                        "name": "is--country"
+                    },
+                    {
+                        "name": "world_4region"
+                    },
+                    {
+                        "name": "latitude"
+                    },
+                    {
+                        "name": "longitude"
                     }
                 ],
                 "primaryKey": "country"
+            }
+        },
+        {
+            "path": "ddf--entities--geo--g77_and_oecd_countries.csv",
+            "name": "ddf--entities--geo--g77_and_oecd_countries",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "g77_and_oecd_countries"
+                    },
+                    {
+                        "name": "rank"
+                    },
+                    {
+                        "name": "name"
+                    },
+                    {
+                        "name": "gwid"
+                    },
+                    {
+                        "name": "is--g77_and_oecd_countries"
+                    }
+                ],
+                "primaryKey": "g77_and_oecd_countries"
+            }
+        },
+        {
+            "path": "ddf--entities--geo--global.csv",
+            "name": "ddf--entities--geo--global",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "is--global"
+                    },
+                    {
+                        "name": "name"
+                    },
+                    {
+                        "name": "unicode_region_subtag"
+                    },
+                    {
+                        "name": "latitude"
+                    },
+                    {
+                        "name": "longitude"
+                    }
+                ],
+                "primaryKey": "geo"
+            }
+        },
+        {
+            "path": "ddf--entities--geo--income_groups.csv",
+            "name": "ddf--entities--geo--income_groups",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "income_groups"
+                    },
+                    {
+                        "name": "name"
+                    },
+                    {
+                        "name": "gwid"
+                    },
+                    {
+                        "name": "is--income_groups"
+                    },
+                    {
+                        "name": "rank"
+                    }
+                ],
+                "primaryKey": "income_groups"
+            }
+        },
+        {
+            "path": "ddf--entities--geo--landlocked.csv",
+            "name": "ddf--entities--geo--landlocked",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "landlocked"
+                    },
+                    {
+                        "name": "rank"
+                    },
+                    {
+                        "name": "name"
+                    },
+                    {
+                        "name": "gwid"
+                    },
+                    {
+                        "name": "is--landlocked"
+                    }
+                ],
+                "primaryKey": "landlocked"
+            }
+        },
+        {
+            "path": "ddf--entities--geo--main_religion_2008.csv",
+            "name": "ddf--entities--geo--main_religion_2008",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "main_religion_2008"
+                    },
+                    {
+                        "name": "rank"
+                    },
+                    {
+                        "name": "name"
+                    },
+                    {
+                        "name": "gwid"
+                    },
+                    {
+                        "name": "is--main_religion_2008"
+                    }
+                ],
+                "primaryKey": "main_religion_2008"
+            }
+        },
+        {
+            "path": "ddf--entities--geo--world_4region.csv",
+            "name": "ddf--entities--geo--world_4region",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "rank"
+                    },
+                    {
+                        "name": "is--world_4region"
+                    },
+                    {
+                        "name": "name"
+                    },
+                    {
+                        "name": "name_short"
+                    },
+                    {
+                        "name": "name_long"
+                    },
+                    {
+                        "name": "description"
+                    },
+                    {
+                        "name": "latitude"
+                    },
+                    {
+                        "name": "longitude"
+                    },
+                    {
+                        "name": "color"
+                    },
+                    {
+                        "name": "shape_lores_svg"
+                    }
+                ],
+                "primaryKey": "geo"
+            }
+        },
+        {
+            "path": "ddf--entities--geo--world_6region.csv",
+            "name": "ddf--entities--geo--world_6region",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geo"
+                    },
+                    {
+                        "name": "rank"
+                    },
+                    {
+                        "name": "is--world_6region"
+                    },
+                    {
+                        "name": "name"
+                    },
+                    {
+                        "name": "name_short"
+                    },
+                    {
+                        "name": "name_long"
+                    },
+                    {
+                        "name": "description"
+                    },
+                    {
+                        "name": "latitude"
+                    },
+                    {
+                        "name": "longitude"
+                    },
+                    {
+                        "name": "color"
+                    },
+                    {
+                        "name": "shape_lores_svg"
+                    }
+                ],
+                "primaryKey": "geo"
             }
         }
     ]
