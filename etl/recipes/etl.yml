@@ -704,12 +704,14 @@ cooking:
                   - country
         - procedure: serve
           ingredients:
+              - *dp1_0
               - *dp1_1
               - *dp1_2
               - *dp1_3
               - *dp1_4
               - *dp1_5
               - *dp1_6
+              - *dp2_0
               - *dp2_1
               - *dp2_2
               - *dp2_3

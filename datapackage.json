@@ -410,6 +410,60 @@
             }
         },
         {
+            "path": "ddf--datapoints--population--by--global--year--age--gender.csv",
+            "name": "ddf--datapoints--population--by--global--year--age--gender",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "global"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "global",
+                    "year",
+                    "age",
+                    "gender"
+                ]
+            }
+        },
+        {
+            "path": "ddf--datapoints--population--by--global--year--age.csv",
+            "name": "ddf--datapoints--population--by--global--year--age",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "global"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "global",
+                    "year",
+                    "age"
+                ]
+            }
+        },
+        {
             "path": "ddf--datapoints--population--by--income_groups--year.csv",
             "name": "ddf--datapoints--population--by--income_groups--year",
             "schema": {
