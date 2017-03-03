@@ -1,5 +1,5 @@
 concept,color,concept_type,domain,drill_up,indicator_url,name,scales,tags,unit
-age,,entity_domain,,,,,,,
+age,,entity_domain,,,,,"[""linear""]",,
 alt_5,,string,,,,ALT 5,,_none,
 alternative_1,,string,,,,Alternative 1,,_none,
 alternative_2,,string,,,,Alternative 2,,_none,
