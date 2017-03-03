@@ -1,0 +1,66 @@
+info:
+    base:
+        - &gm_pop ddf--gapminder--population_historic
+        - &un_pop ddf--unpop--wpp_population
+        - &gm_geo ddf--gapminder--geo_entity_domain
+
+ingredients:
+    # Gapminder historic population ingredients
+    - id: gmpop-datapoints-pop
+      dataset: *gm_pop
+      key: area, year
+      value:
+          - total_population_with_interpolations
+    - id: gmpop-entities-area
+      dataset: *gm_pop
+      key: area
+      value: "*"
+    # UN WPP ingredients
+    - id: unpop-datapoints-pop-by-age
+      dataset: *un_pop
+      key: country_code,year,age
+      value: "*"
+    - id: unpop-datapoints-pop-by-age-gender
+      dataset: *un_pop
+      key: country_code, year, age, gender
+      value: "*"
+    # - id: unpop-datapoints-pop_world-by-age
+    #   dataset: *un_pop
+    #   key: country_code, year, age
+    #   value: "*"
+    #   row_fliter:
+    #       country_code:
+    #           - '900'
+    # - id: unpop-datapoints-pop_world-by-age-gender
+    #   dataset: *un_pop
+    #   key: country_code, year, age, gender
+    #   value: "*"
+    #   row_fliter:
+    #       country_code:
+    #           - '900'
+    - id: unpop-entities-age
+      dataset: *un_pop
+      key: age
+      value: "*"
+    - id: unpop-entities-country_code
+      dataset: *un_pop
+      key: country_code
+      value: "*"
+    - id: unpop-entities-gender
+      dataset: *un_pop
+      key: gender
+      value: "*"
+    # Gapminder geo ingredients
+    - id: gm-entities-geo
+      dataset: *gm_geo
+      key: geo
+      value: "*"
+    - id: gm-entities-country
+      dataset: *gm_geo
+      key: country
+      value: "*"
+    - id: gm-concepts-geo
+      dataset: *gm_geo
+      key: concept
+      value: "*"
+
