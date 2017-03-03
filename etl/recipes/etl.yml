@@ -660,7 +660,6 @@ cooking:
                   population: sum
               insert_key:
                   global: world
-              debug: true
           result: gmpop-datapoints-pop_world
 
         - procedure: groupby
@@ -672,7 +671,6 @@ cooking:
                   population: sum
               insert_key:
                   global: world
-              debug: true
           result: unpop-datapoints-pop_world
 
         - procedure: trend_bridge
