@@ -37,7 +37,7 @@ name,,string,,,https://github.com/open-numbers/ddf--gapminder--dim_geo_countries
 name_long,,string,,,,Name Long,,_none,,
 name_short,,string,,,,Name Short,,_none,,
 pandg,,string,,,,pandg,,_none,,
-population,,measure,,,https://esa.un.org/unpd/wpp/Download/Standard/Interpolated/,Population,,_none,,De facto population as of 1 July of the year indicated classified by single age. Data from UN Population Devision: World Population Prospects (Rev. 2015)
+population,,measure,,,https://esa.un.org/unpd/wpp/Download/Standard/Interpolated/,Population,,_none,,De facto population as of 1 July of the year indicated classified by single age. Data from UN Population Division: World Population Prospects (Rev. 2015)
 rank,,measure,,,,Ranking order,,_none,,
 scales,,string,,,,Scales,,_none,,
 shape_lores_svg,,string,,,,Shapes,,_none,,
