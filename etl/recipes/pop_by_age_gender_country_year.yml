@@ -1,0 +1,111 @@
+# in this recipe:
+# 1. datapoints for country/age/gender/year for UN WPP
+
+info:
+    id: pop_by_counrty_age_year
+    base:
+        - &gm_pop ddf--gapminder--population_historic
+        - &un_pop ddf--unpop--wpp_population
+        - &gm_geo ddf--gapminder--geo_entity_domain
+
+config:
+    ddf_dir: /Users/semio/src/work/Gapminder/
+    recipes_dir: ./
+
+ingredients:
+    - id: unpop-datapoints-pop-by-country-age-gender
+      dataset: *un_pop
+      key: age1yearinterval, gender, country, variant, year
+      value:
+          - population
+    - id: gm-entities-country
+      dataset: *gm_geo
+      key: country
+      value: "*"
+    - id: unpop-entities-country
+      dataset: *un_pop
+      key: country
+      value: "*"
+
+cooking:
+    datapoints:
+        - procedure: run_op
+          ingredients:
+              - unpop-datapoints-pop-by-country-age-gender
+          options:
+              op:
+                  population: population * 1000
+          result: unpop-datapoints-pop-by-country-age-gender-thousands
+        - procedure: translate_header
+          ingredients:
+              - unpop-datapoints-pop-by-country-age-gender-thousands
+          options:
+              dictionary:
+                  age1yearinterval: age
+          result: unpop-by-age-gender-country-translated
+
+        - procedure: filter_row
+          ingredients:
+              - unpop-by-age-gender-country-translated
+          options:
+              dictionary:
+                  population:
+                      from: population
+                      variant: estimates
+          result: unpop-datapoints-pop-by-country-age-gender-thousands-before-2016
+
+        - procedure: filter_row
+          ingredients:
+              - unpop-by-age-gender-country-translated
+          options:
+              dictionary:
+                  population:
+                      from: population
+                      variant: medium variant
+          result: unpop-datapoints-pop-by-country-age-gender-thousands-2015-and-after
+
+        # 2015 has estimates and medium variant data, and we want to use estimates data.
+        # so we use deep merge to overwrite medium variant with estimates
+        - procedure: merge 
+          ingredients:
+              - unpop-datapoints-pop-by-country-age-gender-thousands-2015-and-after
+              - unpop-datapoints-pop-by-country-age-gender-thousands-before-2016
+          options:
+              deep: true
+          result: unpop-datapoints-pop-by-country-age-gender-deduplicated
+
+        # translate columns
+        - procedure: translate_column
+          ingredients:
+              - unpop-entities-country
+          options:
+              column: name
+              target_column: country_gm
+              dictionary:
+                  base: gm-entities-country
+                  key: ['gapminder_list', 'alternative_1', 'alternative_2', 'alternative_3',
+                        'alternative_4_cdiac', 'pandg', 'god_id', 'alt_5', 'upper_case_name',
+                        'arb1', 'arb2', 'arb3', 'arb4', 'arb5', 'arb6', 'name', 'iso3166_1_alpha2',
+                        'iso3166_1_alpha3', 'iso3166_2'
+                        ]
+                  value: country
+          result: unpop-entities-country_code-aligned
+
+        - procedure: translate_column
+          ingredients:
+              - unpop-datapoints-pop-by-country-age-gender-deduplicated
+          options:
+              column: country
+              dictionary:
+                  base: unpop-entities-country_code-aligned
+                  key: country
+                  value: country_gm
+          result: &final unpop-datapoints-pop-by-country-age-gender-aligned
+
+        - procedure: serve
+          ingredients:
+              - *final
+          options:
+              split_datapoints_by:
+                  - country
+

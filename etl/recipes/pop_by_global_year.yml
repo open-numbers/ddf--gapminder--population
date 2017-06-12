@@ -1,0 +1,115 @@
+# in this recipe:
+# bridged datapoints for global-year for UN WPP and Gapminder historic population
+# 
+# Note: global data for gapminder is calculated by suming all countries' data
+
+info:
+    id: pop_by_global_year
+    base:
+        - &gm_pop ddf--gapminder--population_historic
+        - &un_pop ddf--unpop--wpp_population
+        - &gm_geo ddf--gapminder--geo_entity_domain
+
+config:
+    ddf_dir: /Users/semio/src/work/Gapminder/
+    recipes_dir: ./
+
+ingredients:
+    - id: gmpop-datapoints-pop
+      dataset: *gm_pop
+      key: area, year
+      value:
+          - total_population_with_interpolations
+
+    - id: unpop-datapoints-pop-by-global
+      dataset: *un_pop
+      key: global, variant, year
+      value:
+          - population
+
+cooking:
+    datapoints:
+        - procedure: run_op
+          ingredients:
+              - unpop-datapoints-pop-by-global 
+          options:
+              op:
+                  population: population * 1000
+          result: unpop-datapoints-pop-by-global-thousands
+        - procedure: filter_row
+          ingredients:
+              - unpop-datapoints-pop-by-global-thousands
+          options:
+              dictionary:
+                  population:
+                      from: population
+                      variant: estimates
+          result: unpop-datapoints-pop-by-global-thousands-before-2016
+
+        - procedure: filter_row
+          ingredients:
+              - unpop-datapoints-pop-by-global-thousands
+          options:
+              dictionary:
+                  population:
+                      from: population
+                      variant: medium variant
+          result: unpop-datapoints-pop-by-global-thousands-2015-and-after
+        # 2015 has estimates and medium variant data, and we want to use estimates data.
+        # so we use deep merge to overwrite medium variant with estimates
+        - procedure: merge 
+          ingredients:
+              - unpop-datapoints-pop-by-global-thousands-2015-and-after
+              - unpop-datapoints-pop-by-global-thousands-before-2016
+          options:
+              deep: true
+              # debug: true
+          result: unpop-datapoints-pop-by-global-deduplicated
+
+        # translate columns
+        - procedure: translate_column
+          ingredients:
+              - unpop-datapoints-pop-by-global-deduplicated
+          options:
+              column: global
+              dictionary:
+                  '900': world
+          result: unpop-datapoints-pop-by-global-translated
+
+        # create global for gapminder
+        - procedure: groupby
+          ingredients:
+              - gmpop-datapoints-pop
+          options:
+              groupby: year
+              aggregate:
+                  total_population_with_interpolations: sum
+              insert_key:
+                  global: world
+          result: gmpop-datapoints-global
+        - procedure: translate_header
+          ingredients:
+              - gmpop-datapoints-global
+          options:
+              dictionary:
+                  total_population_with_interpolations: population
+          result: gmpop-datapoints-global-translated
+
+        # trend bridge
+        - procedure: trend_bridge
+          ingredients:
+              - gmpop-datapoints-global-translated
+          options:
+              bridge_start:
+                  ingredient: gmpop-datapoints-global-translated
+                  column: population
+              bridge_end:
+                  ingredient: unpop-datapoints-pop-by-global-translated
+                  column: population
+              bridge_on: year
+              bridge_length: 10
+          result: &bridged pop-country-bridged
+
+        - procedure: serve
+          ingredients:
+              - *bridged
