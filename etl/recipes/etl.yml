@@ -1,0 +1,92 @@
+info:
+    id: ddf--gapminder--population
+    author:  semio<prairy.long@gmail.com> at Gapminder
+    version: 0.1
+    base:
+        - &gm_pop ddf--gapminder--population_historic
+        - &un_pop ddf--unpop--wpp_population
+        - &gm_geo ddf--gapminder--geo_entity_domain
+
+config:
+    ddf_dir: /Users/semio/src/work/Gapminder/
+    recipes_dir: ./
+
+include:
+    - pop_by_age_country_year.yml
+    - pop_by_age_gender_country_year.yml
+    - pop_by_country_year.yml
+    - pop_by_global_year.yml
+
+
+ingredients:
+    - id: gm-entities-geo
+      dataset: *gm_geo
+      key: geo
+      value: "*"
+    - id: unpop-entities-age5yearinterval
+      dataset: *un_pop
+      key: age5yearinterval
+      value: "*"
+    - id: unpop-entities-agebroad
+      dataset: *un_pop
+      key: agebroad
+      value: "*"
+    - id: unpop-entities-gender
+      dataset: *un_pop
+      key: gender
+      value: "*"
+    - id: gm-concepts-geo
+      dataset: *gm_geo
+      key: concept
+      value: "*"
+
+
+cooking:
+    entities:
+        - procedure: translate_header
+          ingredients:
+              - unpop-entities-age5yearinterval
+          options:
+              dictionary:
+                  age5yearinterval: age
+          result: unpop-entities-age-1
+        - procedure: translate_header
+          ingredients:
+              - unpop-entities-agebroad
+          options:
+              dictionary:
+                  agebroad: age
+          result: unpop-entities-age-2
+        - procedure: merge
+          ingredients:
+              - unpop-entities-age-1
+              - unpop-entities-age-2
+          options:
+              deep: true
+          result: unpop-entities-age
+        - procedure: serve
+          ingredients:
+              - gm-entities-geo
+              - unpop-entities-age
+              - unpop-entities-gender
+    concepts:
+        - procedure: extract_concepts
+          ingredients:
+              - unpop-datapoints-pop-by-country-age-gender-aligned
+          options:
+              include_keys: true
+              overwrite:
+                  year: time
+                  age: entity_domain
+                  gender: entity_domain
+          result: extracted_concepts
+        - procedure: merge
+          ingredients:
+              - extracted_concepts
+              - gm-concepts-geo
+          options:
+              deep: true
+          result: concepts_final
+        - procedure: serve
+          ingredients:
+              - concepts_final

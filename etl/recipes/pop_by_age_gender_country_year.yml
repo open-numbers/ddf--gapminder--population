@@ -106,6 +106,7 @@ cooking:
           ingredients:
               - *final
           options:
+              sub_folder: ddf--datapoints--population--by--country--age--gender--year
               split_datapoints_by:
                   - country
 

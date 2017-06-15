@@ -345,3 +345,4 @@ cooking:
               - *income_groups
               - *landlocked
               - *main_religion_2008
+              - *g77_and_oecd_countries

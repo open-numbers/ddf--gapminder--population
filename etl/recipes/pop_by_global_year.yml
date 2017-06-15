@@ -108,7 +108,7 @@ cooking:
                   column: population
               bridge_on: year
               bridge_length: 10
-          result: &bridged pop-country-bridged
+          result: &bridged pop-global-bridged
 
         - procedure: serve
           ingredients:
