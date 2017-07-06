@@ -54,28 +54,48 @@ cooking:
           ingredients:
               - unpop-datapoints-pop-by-country-thousands
           options:
-              dictionary:
+              filters:
                   population:
-                      from: population
                       variant: estimates
           result: unpop-datapoints-pop-by-country-thousands-before-2016
+
+        - procedure: groupby
+          ingredients:
+              - unpop-datapoints-pop-by-country-thousands-before-2016
+          options:
+              groupby:
+                  - country
+                  - year
+              aggregate:
+                  population: sum
+          result: unpop-datapoints-pop-by-country-thousands-before-2016-novar
 
         - procedure: filter_row
           ingredients:
               - unpop-datapoints-pop-by-country-thousands
           options:
-              dictionary:
+              filters:
                   population:
-                      from: population
-                      variant: medium variant
+                      variant: medium_variant
           result: unpop-datapoints-pop-by-country-thousands-2015-and-after
+
+        - procedure: groupby
+          ingredients:
+              - unpop-datapoints-pop-by-country-thousands-2015-and-after
+          options:
+              groupby:
+                  - country
+                  - year
+              aggregate:
+                  population: sum
+          result: unpop-datapoints-pop-by-country-thousands-2015-and-after-novar
 
         # 2015 has estimates and medium variant data, and we want to use estimates data.
         # so we use deep merge to overwrite medium variant with estimates
-        - procedure: merge 
+        - procedure: merge
           ingredients:
-              - unpop-datapoints-pop-by-country-thousands-2015-and-after
-              - unpop-datapoints-pop-by-country-thousands-before-2016
+              - unpop-datapoints-pop-by-country-thousands-2015-and-after-novar
+              - unpop-datapoints-pop-by-country-thousands-before-2016-novar
           options:
               deep: true
               # debug: true
@@ -189,7 +209,7 @@ cooking:
               aggregate:
                   population: sum
           result: &w4r pop-datapoints-by-world_4region
-        
+
 
         # world_6region
         - procedure: translate_column
@@ -278,7 +298,7 @@ cooking:
                   population: sum
           result: &landlocked pop-datapoints-by-landlocked
 
-        
+
         # g77_and_oecd_countries
         - procedure: translate_column
           ingredients:
@@ -307,7 +327,7 @@ cooking:
               aggregate:
                   population: sum
           result: &g77_and_oecd_countries pop-datapoints-by-g77_and_oecd_countries
-        
+
         # main_religion_2008
         - procedure: translate_column
           ingredients:

@@ -1,6 +1,6 @@
 # in this recipe:
 # bridged datapoints for global-year for UN WPP and Gapminder historic population
-# 
+#
 # Note: global data for gapminder is calculated by suming all countries' data
 
 info:
@@ -31,7 +31,7 @@ cooking:
     datapoints:
         - procedure: run_op
           ingredients:
-              - unpop-datapoints-pop-by-global 
+              - unpop-datapoints-pop-by-global
           options:
               op:
                   population: population * 1000
@@ -40,27 +40,48 @@ cooking:
           ingredients:
               - unpop-datapoints-pop-by-global-thousands
           options:
-              dictionary:
+              filters:
                   population:
-                      from: population
                       variant: estimates
           result: unpop-datapoints-pop-by-global-thousands-before-2016
+
+        - procedure: groupby
+          ingredients:
+              - unpop-datapoints-pop-by-global-thousands-before-2016
+          options:
+              groupby:
+                  - global
+                  - year
+              aggregate:
+                  population: sum
+          result: unpop-datapoints-pop-by-global-thousands-before-2016-novar
 
         - procedure: filter_row
           ingredients:
               - unpop-datapoints-pop-by-global-thousands
           options:
-              dictionary:
+              filters:
                   population:
-                      from: population
-                      variant: medium variant
+                      variant: medium_variant
           result: unpop-datapoints-pop-by-global-thousands-2015-and-after
-        # 2015 has estimates and medium variant data, and we want to use estimates data.
-        # so we use deep merge to overwrite medium variant with estimates
-        - procedure: merge 
+
+        - procedure: groupby
           ingredients:
               - unpop-datapoints-pop-by-global-thousands-2015-and-after
-              - unpop-datapoints-pop-by-global-thousands-before-2016
+          options:
+              groupby:
+                  - global
+                  - year
+              aggregate:
+                  population: sum
+          result: unpop-datapoints-pop-by-global-thousands-2015-and-after-novar
+
+        # 2015 has estimates and medium variant data, and we want to use estimates data.
+        # so we use deep merge to overwrite medium variant with estimates
+        - procedure: merge
+          ingredients:
+              - unpop-datapoints-pop-by-global-thousands-2015-and-after-novar
+              - unpop-datapoints-pop-by-global-thousands-before-2016-novar
           options:
               deep: true
               # debug: true
@@ -74,6 +95,7 @@ cooking:
               column: global
               dictionary:
                   '900': world
+              debug: true
           result: unpop-datapoints-pop-by-global-translated
 
         # create global for gapminder
@@ -93,6 +115,7 @@ cooking:
           options:
               dictionary:
                   total_population_with_interpolations: population
+              debug: true
           result: gmpop-datapoints-global-translated
 
         # trend bridge

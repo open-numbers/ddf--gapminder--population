@@ -8,7 +8,7 @@ info:
         - &gm_geo ddf--gapminder--geo_entity_domain
 
 config:
-    ddf_dir: /Users/semio/src/work/Gapminder/
+    ddf_dir: /Users/semio/src/work/Gapminder/datasets
     recipes_dir: ./
 
 include:
@@ -23,13 +23,9 @@ ingredients:
       dataset: *gm_geo
       key: geo
       value: "*"
-    - id: unpop-entities-age5yearinterval
+    - id: unpop-entities-age
       dataset: *un_pop
-      key: age5yearinterval
-      value: "*"
-    - id: unpop-entities-agebroad
-      dataset: *un_pop
-      key: agebroad
+      key: age
       value: "*"
     - id: unpop-entities-gender
       dataset: *un_pop
@@ -39,31 +35,20 @@ ingredients:
       dataset: *gm_geo
       key: concept
       value: "*"
-
+    - id: unpop-concepts-entities
+      dataset: *un_pop
+      key: concept
+      value: "*"
+      filter:
+          concept:
+              - age
+              - age1yearinterval
+              - age5yearinterval
+              - agebroad
+              - gender
 
 cooking:
     entities:
-        - procedure: translate_header
-          ingredients:
-              - unpop-entities-age5yearinterval
-          options:
-              dictionary:
-                  age5yearinterval: age
-          result: unpop-entities-age-1
-        - procedure: translate_header
-          ingredients:
-              - unpop-entities-agebroad
-          options:
-              dictionary:
-                  agebroad: age
-          result: unpop-entities-age-2
-        - procedure: merge
-          ingredients:
-              - unpop-entities-age-1
-              - unpop-entities-age-2
-          options:
-              deep: true
-          result: unpop-entities-age
         - procedure: serve
           ingredients:
               - gm-entities-geo
@@ -84,6 +69,7 @@ cooking:
           ingredients:
               - extracted_concepts
               - gm-concepts-geo
+              - unpop-concepts-entities
           options:
               deep: true
           result: concepts_final
