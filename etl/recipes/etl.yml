@@ -25,7 +25,7 @@ ingredients:
       value: "*"
     - id: unpop-entities-age
       dataset: *un_pop
-      key: age
+      key: age1yearinterval
       value: "*"
     - id: unpop-entities-gender
       dataset: *un_pop
@@ -47,13 +47,20 @@ ingredients:
 
 cooking:
     entities:
+        - procedure: translate_header
+          ingredients:
+              - unpop-entities-age
+          options:
+              dictionary:
+                  age1yearinterval: age
+          result: unpop-entities-age-final
         - procedure: serve
           ingredients:
               - gm-entities-geo
               - unpop-entities-gender
         - procedure: serve
           ingredients:
-              - unpop-entities-age
+              - unpop-entities-age-final
           options:
               no_keep_sets: true
     concepts:
