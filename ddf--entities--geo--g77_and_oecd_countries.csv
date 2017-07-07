@@ -1,0 +1,4 @@
+geo,is--g77_and_oecd_countries,gwid,rank,name
+others,TRUE,i274,3.0,Others
+g77,TRUE,i272,1.0,G77
+oecd,TRUE,i273,2.0,OECD

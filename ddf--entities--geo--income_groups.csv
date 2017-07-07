@@ -1,0 +1,5 @@
+geo,is--income_groups,gwid,rank,name
+high_income,TRUE,i268,1.0,High income
+upper_middle_income,TRUE,i267,2.0,Upper middle income
+lower_middle_income,TRUE,i269,3.0,Lower middle income
+low_income,TRUE,i266,4.0,Low income
