@@ -46,6 +46,7 @@ ingredients:
               - age5yearinterval
               - agebroad
               - gender
+              - sourceurl
 
 cooking:
     entities:
