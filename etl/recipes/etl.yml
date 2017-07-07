@@ -42,9 +42,6 @@ ingredients:
       filter:
           concept:
               - age
-              - age1yearinterval
-              - age5yearinterval
-              - agebroad
               - gender
               - sourceurl
 
@@ -53,8 +50,12 @@ cooking:
         - procedure: serve
           ingredients:
               - gm-entities-geo
-              - unpop-entities-age
               - unpop-entities-gender
+        - procedure: serve
+          ingredients:
+              - unpop-entities-age
+          options:
+              no_keep_sets: true
     concepts:
         - procedure: extract_concepts
           ingredients:

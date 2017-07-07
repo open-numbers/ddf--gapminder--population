@@ -27,6 +27,18 @@ ingredients:
       value:
           - population
 
+    - id: unpop-datapoints-pop-by-global-age
+      dataset: *un_pop
+      key: global, variant, year, age1yearinterval
+      value:
+          - population
+
+    - id: unpop-datapoints-pop-by-global-age-gender
+      dataset: *un_pop
+      key: global, variant, year, age1yearinterval, gender
+      value:
+          - population
+
 cooking:
     datapoints:
         - procedure: run_op
@@ -36,6 +48,23 @@ cooking:
               op:
                   population: population * 1000
           result: unpop-datapoints-pop-by-global-thousands
+
+        - procedure: run_op
+          ingredients:
+              - unpop-datapoints-pop-by-global-age
+          options:
+              op:
+                  population: population * 1000
+          result: unpop-datapoints-pop-by-global-age-thousands
+
+        - procedure: run_op
+          ingredients:
+              - unpop-datapoints-pop-by-global-age-gender
+          options:
+              op:
+                  population: population * 1000
+          result: unpop-datapoints-pop-by-global-age-gender-thousands
+
         - procedure: filter_row
           ingredients:
               - unpop-datapoints-pop-by-global-thousands
@@ -133,6 +162,152 @@ cooking:
               bridge_length: 10
           result: &bridged pop-global-bridged
 
+        # global pop by age and age-gender
+        - procedure: translate_header
+          ingredients:
+              - unpop-datapoints-pop-by-global-age-thousands
+          options:
+              dictionary:
+                  age1yearinterval: age
+          result: unpop-datapoints-pop-by-global-age-thousands-translated
+        - procedure: filter_row
+          ingredients:
+              - unpop-datapoints-pop-by-global-age-thousands-translated
+          options:
+              filters:
+                  population:
+                      variant: estimates
+          result: unpop-datapoints-pop-by-global-age-thousands-before-2016
+
+        - procedure: groupby
+          ingredients:
+              - unpop-datapoints-pop-by-global-age-thousands-before-2016
+          options:
+              groupby:
+                  - global
+                  - age
+                  - year
+              aggregate:
+                  population: sum
+          result: unpop-datapoints-pop-by-global-age-thousands-before-2016-novar
+
+        - procedure: filter_row
+          ingredients:
+              - unpop-datapoints-pop-by-global-age-thousands-translated
+          options:
+              filters:
+                  population:
+                      variant: medium_variant
+          result: unpop-datapoints-pop-by-global-age-thousands-2015-and-after
+
+        - procedure: groupby
+          ingredients:
+              - unpop-datapoints-pop-by-global-age-thousands-2015-and-after
+          options:
+              groupby:
+                  - global
+                  - age
+                  - year
+              aggregate:
+                  population: sum
+          result: unpop-datapoints-pop-by-global-age-thousands-2015-and-after-novar
+
+        # 2015 has estimates and medium variant data, and we want to use estimates data.
+        # so we use deep merge to overwrite medium variant with estimates
+        - procedure: merge
+          ingredients:
+              - unpop-datapoints-pop-by-global-age-thousands-2015-and-after-novar
+              - unpop-datapoints-pop-by-global-age-thousands-before-2016-novar
+          options:
+              deep: true
+              # debug: true
+          result: unpop-datapoints-pop-by-global-age-deduplicated
+
+        - procedure: translate_column
+          ingredients:
+              - unpop-datapoints-pop-by-global-age-deduplicated
+          options:
+              column: global
+              dictionary:
+                  '900': world
+              debug: true
+          result: &byage unpop-datapoints-pop-by-global-age-translated
+
+        # by age-gender
+        - procedure: translate_header
+          ingredients:
+              - unpop-datapoints-pop-by-global-age-gender-thousands
+          options:
+              dictionary:
+                  age1yearinterval: age
+          result: unpop-datapoints-pop-by-global-age-gender-thousands-translated
+        - procedure: filter_row
+          ingredients:
+              - unpop-datapoints-pop-by-global-age-gender-thousands-translated
+          options:
+              filters:
+                  population:
+                      variant: estimates
+          result: unpop-datapoints-pop-by-global-age-gender-thousands-before-2016
+
+        - procedure: groupby
+          ingredients:
+              - unpop-datapoints-pop-by-global-age-gender-thousands-before-2016
+          options:
+              groupby:
+                  - global
+                  - age
+                  - gender
+                  - year
+              aggregate:
+                  population: sum
+          result: unpop-datapoints-pop-by-global-age-gender-thousands-before-2016-novar
+
+        - procedure: filter_row
+          ingredients:
+              - unpop-datapoints-pop-by-global-age-gender-thousands-translated
+          options:
+              filters:
+                  population:
+                      variant: medium_variant
+          result: unpop-datapoints-pop-by-global-age-gender-thousands-2015-and-after
+
+        - procedure: groupby
+          ingredients:
+              - unpop-datapoints-pop-by-global-age-gender-thousands-2015-and-after
+          options:
+              groupby:
+                  - global
+                  - age
+                  - gender
+                  - year
+              aggregate:
+                  population: sum
+          result: unpop-datapoints-pop-by-global-age-gender-thousands-2015-and-after-novar
+
+        # 2015 has estimates and medium variant data, and we want to use estimates data.
+        # so we use deep merge to overwrite medium variant with estimates
+        - procedure: merge
+          ingredients:
+              - unpop-datapoints-pop-by-global-age-gender-thousands-2015-and-after-novar
+              - unpop-datapoints-pop-by-global-age-gender-thousands-before-2016-novar
+          options:
+              deep: true
+              # debug: true
+          result: unpop-datapoints-pop-by-global-age-gender-deduplicated
+
+        - procedure: translate_column
+          ingredients:
+              - unpop-datapoints-pop-by-global-age-gender-deduplicated
+          options:
+              column: global
+              dictionary:
+                  '900': world
+              debug: true
+          result: &byagegender unpop-datapoints-pop-by-global-age-gender-translated
+
         - procedure: serve
           ingredients:
               - *bridged
+              - *byage
+              - *byagegender
