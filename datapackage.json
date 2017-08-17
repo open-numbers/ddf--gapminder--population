@@ -614,6 +614,9 @@
                 "fields": [
                     {
                         "name": "gender"
+                    },
+                    {
+                        "name": "name"
                     }
                 ],
                 "primaryKey": "gender"
