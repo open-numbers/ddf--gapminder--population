@@ -1,0 +1,323 @@
+# in this recipe:
+# 1. datapoints for country/age/year for UN WPP
+
+info:
+    id: pop_by_counrty_age_year
+    base:
+        - &gm_pop ddf--gapminder--population_historic
+        - &un_pop ddf--unpop--wpp_population
+        - &gm_geo ddf--gapminder--geo_entity_domain
+
+config:
+    ddf_dir: /Users/semio/src/work/Gapminder/
+    recipes_dir: ./
+
+ingredients:
+    - id: unpop-datapoints-pop-by-country-age
+      dataset: *un_pop
+      key: age1yearinterval, country, variant, year
+      value:
+          - population
+    - id: gm-entities-country
+      dataset: *gm_geo
+      key: country
+      value: "*"
+    - id: unpop-entities-country
+      dataset: *un_pop
+      key: country
+      value: "*"
+
+cooking:
+    datapoints:
+        - procedure: run_op
+          ingredients:
+              - unpop-datapoints-pop-by-country-age
+          options:
+              op:
+                  population: population * 1000
+          result: unpop-datapoints-pop-by-country-age-thousands
+        - procedure: translate_header
+          ingredients:
+              - unpop-datapoints-pop-by-country-age-thousands
+          options:
+              dictionary:
+                  age1yearinterval: age
+          result: unpop-by-age-country-translated
+
+        - procedure: filter_row
+          ingredients:
+              - unpop-by-age-country-translated
+          options:
+              filters:
+                  population:
+                      variant: estimates
+          result: unpop-datapoints-pop-by-country-age-thousands-before-2016
+
+        - procedure: groupby
+          ingredients:
+              - unpop-datapoints-pop-by-country-age-thousands-before-2016
+          options:
+              groupby:
+                  - country
+                  - age
+                  - year
+              aggregate:
+                  population: sum
+          result: unpop-datapoints-pop-by-country-age-thousands-before-2016-novar
+
+        - procedure: filter_row
+          ingredients:
+              - unpop-by-age-country-translated
+          options:
+              filters:
+                  population:
+                      variant: medium_variant
+          result: unpop-datapoints-pop-by-country-age-thousands-2015-and-after
+
+        - procedure: groupby
+          ingredients:
+              - unpop-datapoints-pop-by-country-age-thousands-2015-and-after
+          options:
+              groupby:
+                  - country
+                  - age
+                  - year
+              aggregate:
+                  population: sum
+          result: unpop-datapoints-pop-by-country-age-thousands-2015-and-after-novar
+
+        # 2015 has estimates and medium variant data, and we want to use estimates data.
+        # so we use deep merge to overwrite medium variant with estimates
+        - procedure: merge
+          ingredients:
+              - unpop-datapoints-pop-by-country-age-thousands-2015-and-after-novar
+              - unpop-datapoints-pop-by-country-age-thousands-before-2016-novar
+          options:
+              deep: true
+          result: unpop-datapoints-pop-by-country-age-deduplicated
+
+        # translate columns
+        - procedure: translate_column
+          ingredients:
+              - unpop-entities-country
+          options:
+              column: name
+              target_column: country_gm
+              dictionary:
+                  base: gm-entities-country
+                  key: ['gapminder_list', 'alternative_1', 'alternative_2', 'alternative_3',
+                        'alternative_4_cdiac', 'pandg', 'god_id', 'alt_5', 'upper_case_name',
+                        'arb1', 'arb2', 'arb3', 'arb4', 'arb5', 'arb6', 'name', 'iso3166_1_alpha2',
+                        'iso3166_1_alpha3', 'iso3166_2'
+                        ]
+                  value: country
+          result: unpop-entities-country_code-aligned
+
+        - procedure: translate_column
+          ingredients:
+              - unpop-datapoints-pop-by-country-age-deduplicated
+          options:
+              column: country
+              dictionary:
+                  base: unpop-entities-country_code-aligned
+                  key: country
+                  value: country_gm
+          result: &final unpop-datapoints-pop-by-country-age-aligned
+
+        # aggregate for each geo group
+        # world_4region
+        - procedure: translate_column
+          ingredients:
+              - *final
+          options:
+              column: country
+              dictionary:
+                  base: gm-entities-country
+                  key: country
+                  value: world_4region
+          result: pop-datapoints-age-world_4region
+        - procedure: translate_header
+          ingredients:
+              - pop-datapoints-age-world_4region
+          options:
+              dictionary:
+                  country: world_4region
+          result: pop-datapoints-age-world_4region-translated
+        - procedure: groupby
+          ingredients:
+              - pop-datapoints-age-world_4region-translated
+          options:
+              groupby:
+                  - world_4region
+                  - age
+                  - year
+              aggregate:
+                  population: sum
+          result: &w4r pop-datapoints-by-age-world_4region
+
+        # world_6region
+        - procedure: translate_column
+          ingredients:
+              - *final
+          options:
+              column: country
+              dictionary:
+                  base: gm-entities-country
+                  key: country
+                  value: world_6region
+          result: pop-datapoints-age-world_6region
+        - procedure: translate_header
+          ingredients:
+              - pop-datapoints-age-world_6region
+          options:
+              dictionary:
+                  country: world_6region
+          result: pop-datapoints-age-world_6region-translated
+        - procedure: groupby
+          ingredients:
+              - pop-datapoints-age-world_6region-translated
+          options:
+              groupby:
+                  - world_6region
+                  - age
+                  - year
+              aggregate:
+                  population: sum
+          result: &w6r pop-datapoints-by-age-world_6region
+
+        # income_groups
+        - procedure: translate_column
+          ingredients:
+              - *final
+          options:
+              column: country
+              dictionary:
+                  base: gm-entities-country
+                  key: country
+                  value: income_groups
+          result: pop-datapoints-age-income_groups
+        - procedure: translate_header
+          ingredients:
+              - pop-datapoints-age-income_groups
+          options:
+              dictionary:
+                  country: income_groups
+          result: pop-datapoints-age-income_groups-translated
+        - procedure: groupby
+          ingredients:
+              - pop-datapoints-age-income_groups-translated
+          options:
+              groupby:
+                  - income_groups
+                  - age
+                  - year
+              aggregate:
+                  population: sum
+          result: &income pop-datapoints-by-age-income_groups
+
+        # landlocked
+        - procedure: translate_column
+          ingredients:
+              - *final
+          options:
+              column: country
+              dictionary:
+                  base: gm-entities-country
+                  key: country
+                  value: landlocked
+          result: pop-datapoints-age-landlocked
+        - procedure: translate_header
+          ingredients:
+              - pop-datapoints-age-landlocked
+          options:
+              dictionary:
+                  country: landlocked
+          result: pop-datapoints-age-landlocked-translated
+        - procedure: groupby
+          ingredients:
+              - pop-datapoints-age-landlocked-translated
+          options:
+              groupby:
+                  - landlocked
+                  - age
+                  - year
+              aggregate:
+                  population: sum
+          result: &landlocked pop-datapoints-by-age-landlocked
+
+        # g77_and_oecd_countries
+        - procedure: translate_column
+          ingredients:
+              - *final
+          options:
+              column: country
+              dictionary:
+                  base: gm-entities-country
+                  key: country
+                  value: g77_and_oecd_countries
+          result: pop-datapoints-age-g77_and_oecd_countries
+        - procedure: translate_header
+          ingredients:
+              - pop-datapoints-age-g77_and_oecd_countries
+          options:
+              dictionary:
+                  country: g77_and_oecd_countries
+          result: pop-datapoints-age-g77_and_oecd_countries-translated
+        - procedure: groupby
+          ingredients:
+              - pop-datapoints-age-g77_and_oecd_countries-translated
+          options:
+              groupby:
+                  - g77_and_oecd_countries
+                  - age
+                  - year
+              aggregate:
+                  population: sum
+          result: &g77 pop-datapoints-by-age-g77_and_oecd_countries
+
+        # main_religion_2008
+        - procedure: translate_column
+          ingredients:
+              - *final
+          options:
+              column: country
+              dictionary:
+                  base: gm-entities-country
+                  key: country
+                  value: main_religion_2008
+          result: pop-datapoints-age-main_religion_2008
+        - procedure: translate_header
+          ingredients:
+              - pop-datapoints-age-main_religion_2008
+          options:
+              dictionary:
+                  country: main_religion_2008
+          result: pop-datapoints-age-main_religion_2008-translated
+        - procedure: groupby
+          ingredients:
+              - pop-datapoints-age-main_religion_2008-translated
+          options:
+              groupby:
+                  - main_religion_2008
+                  - age
+                  - year
+              aggregate:
+                  population: sum
+          result: &religion pop-datapoints-by-age-main_religion_2008
+
+        - procedure: serve
+          ingredients:
+              - *final
+          options:
+              path: ddf--datapoints--population--by--country--age--year
+              split_datapoints_by:
+                  - country
+
+        - procedure: serve
+          ingredients:
+              - *w4r
+              - *w6r
+              - *income
+              - *landlocked
+              - *g77
+              - *religion
