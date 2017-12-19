@@ -3,9 +3,9 @@ info:
     author:  semio<prairy.long@gmail.com> at Gapminder
     version: 0.1
     base:
-        - &gm_pop ddf--gapminder--population_historic
-        - &un_pop ddf--unpop--wpp_population
-        - &gm_geo ddf--gapminder--geo_entity_domain
+        - &gm_pop open-numbers/ddf--gapminder--population_historic
+        - &un_pop harpalshergill/ddf--unpop--wpp_population
+        - &gm_geo open-numbers/ddf--gapminder--geo_entity_domain
 
 config:
     ddf_dir: /Users/semio/src/work/Gapminder/datasets

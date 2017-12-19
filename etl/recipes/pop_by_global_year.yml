@@ -6,9 +6,9 @@
 info:
     id: pop_by_global_year
     base:
-        - &gm_pop ddf--gapminder--population_historic
-        - &un_pop ddf--unpop--wpp_population
-        - &gm_geo ddf--gapminder--geo_entity_domain
+        - &gm_pop open-numbers/ddf--gapminder--population_historic
+        - &un_pop harpalshergill/ddf--unpop--wpp_population
+        - &gm_geo open-numbers/ddf--gapminder--geo_entity_domain
 
 config:
     ddf_dir: /Users/semio/src/work/Gapminder/
@@ -113,7 +113,6 @@ cooking:
               - unpop-datapoints-pop-by-global-thousands-before-2016-novar
           options:
               deep: true
-              # debug: true
           result: unpop-datapoints-pop-by-global-deduplicated
 
         # translate columns
@@ -124,7 +123,6 @@ cooking:
               column: global
               dictionary:
                   '900': world
-              debug: true
           result: unpop-datapoints-pop-by-global-translated
 
         # create global for gapminder
@@ -144,7 +142,6 @@ cooking:
           options:
               dictionary:
                   total_population_with_interpolations: population
-              debug: true
           result: gmpop-datapoints-global-translated
 
         # trend bridge
@@ -220,7 +217,6 @@ cooking:
               - unpop-datapoints-pop-by-global-age-thousands-before-2016-novar
           options:
               deep: true
-              # debug: true
           result: unpop-datapoints-pop-by-global-age-deduplicated
 
         - procedure: translate_column
@@ -230,7 +226,6 @@ cooking:
               column: global
               dictionary:
                   '900': world
-              debug: true
           result: &byage unpop-datapoints-pop-by-global-age-translated
 
         # by age-gender
@@ -293,7 +288,6 @@ cooking:
               - unpop-datapoints-pop-by-global-age-gender-thousands-before-2016-novar
           options:
               deep: true
-              # debug: true
           result: unpop-datapoints-pop-by-global-age-gender-deduplicated
 
         - procedure: translate_column
@@ -303,7 +297,6 @@ cooking:
               column: global
               dictionary:
                   '900': world
-              debug: true
           result: &byagegender unpop-datapoints-pop-by-global-age-gender-translated
 
         - procedure: serve
