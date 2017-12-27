@@ -50,11 +50,11 @@ cooking:
               op:
                   population: population * 1000
           result: unpop-datapoints-pop-by-country-thousands
-        - procedure: filter_row
+        - procedure: filter
           ingredients:
               - unpop-datapoints-pop-by-country-thousands
           options:
-              filters:
+              row:
                   population:
                       variant: estimates
           result: unpop-datapoints-pop-by-country-thousands-before-2016
@@ -70,11 +70,11 @@ cooking:
                   population: sum
           result: unpop-datapoints-pop-by-country-thousands-before-2016-novar
 
-        - procedure: filter_row
+        - procedure: filter
           ingredients:
               - unpop-datapoints-pop-by-country-thousands
           options:
-              filters:
+              row:
                   population:
                       variant: medium_variant
           result: unpop-datapoints-pop-by-country-thousands-2015-and-after

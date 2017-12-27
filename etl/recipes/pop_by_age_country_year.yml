@@ -44,11 +44,11 @@ cooking:
                   age1yearinterval: age
           result: unpop-by-age-country-translated
 
-        - procedure: filter_row
+        - procedure: filter
           ingredients:
               - unpop-by-age-country-translated
           options:
-              filters:
+              row:
                   population:
                       variant: estimates
           result: unpop-datapoints-pop-by-country-age-thousands-before-2016
@@ -65,11 +65,11 @@ cooking:
                   population: sum
           result: unpop-datapoints-pop-by-country-age-thousands-before-2016-novar
 
-        - procedure: filter_row
+        - procedure: filter
           ingredients:
               - unpop-by-age-country-translated
           options:
-              filters:
+              row:
                   population:
                       variant: medium_variant
           result: unpop-datapoints-pop-by-country-age-thousands-2015-and-after
