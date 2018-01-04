@@ -1,3 +1,3 @@
-landlocked,rank,name,gwid,is--landlocked
-landlocked,2,Landlocked,i271,TRUE
-coastline,1,Coastline,i270,TRUE
+geo,gwid,rank,name,is--landlocked
+landlocked,i271,2,Landlocked,TRUE
+coastline,i270,1,Coastline,TRUE
