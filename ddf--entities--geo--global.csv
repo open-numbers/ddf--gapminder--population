@@ -1,2 +1,2 @@
-geo,unicode_region_subtag,latitude,longitude,name,is--global
+global,unicode_region_subtag,latitude,longitude,name,is--global
 world,001,0,0,World,TRUE
