@@ -29,7 +29,7 @@
                         "name": "drill_up"
                     },
                     {
-                        "name": "indicator_url"
+                        "name": "source_url"
                     },
                     {
                         "name": "name"
@@ -13553,7 +13553,7 @@
                 "primaryKey": [
                     "concept"
                 ],
-                "value": "indicator_url",
+                "value": "source_url",
                 "resources": [
                     "ddf--concepts"
                 ]
