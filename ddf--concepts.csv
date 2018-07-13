@@ -1,4 +1,4 @@
-concept,color,concept_type,description,domain,drill_up,source_url,name,scales,sourceurl,tags,unit
+concept,color,concept_type,description,domain,drill_up,indicator_url,name,scales,sourceurl,tags,unit
 age,,entity_domain,,,,,Age,,,,
 alt_5,,string,,,,,ALT 5,,,_none,
 alternative_1,,string,,,,,Alternative 1,,,_none,
@@ -24,7 +24,7 @@ global,,entity_set,,geo,,,World,,,_none,
 god_id,,string,,,,,GOD_ID,,,_none,
 gwid,,string,,,,,Gwid,,,_none,
 income_groups,"{""palette"": {""upper_middle_income"": ""#a7cb7d"", ""lower_middle_income"": ""#7ea1d1"", ""high_income"": ""#7bc135"", ""low_income"": ""#4366f4""}}",entity_set,,geo,,https://docs.google.com/spreadsheet/pub?key=phT4mwjvEuGCSmAe5aq7HKw,Income groups,,,categorizations,
-source_url,,string,,,,,Source URL,,,_none,
+indicator_url,,string,,,,,Indicator URL,,,_none,
 iso3166_1_alpha2,,string,,,,http://www.iso.org/iso/home/standards/country_codes.htm,ISO 3166-1 alpha-2,,,_none,
 iso3166_1_alpha3,,string,,,,http://www.iso.org/iso/home/standards/country_codes.htm,ISO 3166-1 alpha-3,,,_none,
 iso3166_1_numeric,,string,,,,http://www.iso.org/iso/home/standards/country_codes.htm,ISO 3166-1 numeric,,,_none,

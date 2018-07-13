@@ -3,7 +3,7 @@
     "language": {
         "id": "en"
     },
-    "created": "2018-06-23T20:13:22.298635+00:00",
+    "created": "2018-07-13T20:01:19.954354+00:00",
     "resources": [
         {
             "path": "ddf--concepts.csv",
@@ -29,7 +29,7 @@
                         "name": "drill_up"
                     },
                     {
-                        "name": "source_url"
+                        "name": "indicator_url"
                     },
                     {
                         "name": "name"
@@ -13553,7 +13553,7 @@
                 "primaryKey": [
                     "concept"
                 ],
-                "value": "source_url",
+                "value": "indicator_url",
                 "resources": [
                     "ddf--concepts"
                 ]
