@@ -15,6 +15,5 @@ except KeyError:
 recipe_file = '../recipes/etl.yml'
 
 if __name__ == '__main__':
-    chef = Chef.from_recipe(recipe_file)
-    chef.add_config(ddf_dir=datasets_dir)
+    chef = Chef.from_recipe(recipe_file, ddf_dir=datasets_dir)
     chef.run(serve=True, outpath=out_dir)
