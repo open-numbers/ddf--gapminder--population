@@ -11,7 +11,6 @@ info:
         - &gm_geo open-numbers/ddf--gapminder--geo_entity_domain
 
 config:
-    ddf_dir: /Users/semio/src/work/Gapminder/
     recipes_dir: ./
 
 ingredients:
@@ -301,6 +300,6 @@ cooking:
 
         - procedure: serve
           ingredients:
-              - *bridged
+              # - *bridged
               - *byage
               - *byagegender
