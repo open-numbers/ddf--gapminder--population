@@ -43,6 +43,10 @@ ingredients:
               - age
               - gender
               - sourceurl
+    - id: gm-geo-synonym
+      dataset: *gm_geo
+      key: country, synonym
+      value: "*"
 
 cooking:
     entities:

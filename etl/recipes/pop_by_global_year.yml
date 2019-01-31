@@ -38,6 +38,11 @@ ingredients:
       value:
           - population
 
+    - id: gm-geo-synonym
+      dataset: *gm_geo
+      key: country, synonym
+      value: "*"
+
 cooking:
     datapoints:
         - procedure: run_op
