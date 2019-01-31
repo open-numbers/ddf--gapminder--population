@@ -3,7 +3,7 @@
     "language": {
         "id": "en"
     },
-    "created": "2019-01-31T09:50:39.122056+00:00",
+    "created": "2019-01-31T10:23:26.010905+00:00",
     "resources": [
         {
             "name": "ddf--concepts",
@@ -13271,6 +13271,27 @@
             }
         },
         {
+            "name": "ddf--datapoints--population--by--global--year",
+            "path": "ddf--datapoints--population--by--global--year.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "global"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "global",
+                    "year"
+                ]
+            }
+        },
+        {
             "name": "ddf--datapoints--population--by--income_groups--year",
             "path": "ddf--datapoints--population--by--income_groups--year.csv",
             "schema": {
@@ -15922,11 +15943,22 @@
                 "resources": [
                     "ddf--datapoints--population--by--country--year",
                     "ddf--datapoints--population--by--g77_and_oecd_countries--year",
+                    "ddf--datapoints--population--by--global--year",
                     "ddf--datapoints--population--by--income_groups--year",
                     "ddf--datapoints--population--by--landlocked--year",
                     "ddf--datapoints--population--by--main_religion_2008--year",
                     "ddf--datapoints--population--by--world_4region--year",
                     "ddf--datapoints--population--by--world_6region--year"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "global",
+                    "year"
+                ],
+                "value": "population",
+                "resources": [
+                    "ddf--datapoints--population--by--global--year"
                 ]
             },
             {
