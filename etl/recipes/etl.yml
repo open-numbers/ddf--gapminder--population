@@ -8,14 +8,13 @@ info:
         - &gm_geo open-numbers/ddf--gapminder--geo_entity_domain
 
 config:
-    # ddf_dir: /Users/semio/src/work/Gapminder/datasets
     recipes_dir: ./
 
 include:
     - pop_by_age_country_year.yml
     - pop_by_age_gender_country_year.yml
-    # - pop_by_country_year.yml
-    # - pop_by_global_year.yml
+    - pop_by_country_year.yml
+    - pop_by_global_year.yml
 
 
 ingredients:
@@ -44,6 +43,10 @@ ingredients:
               - age
               - gender
               - sourceurl
+    - id: gm-geo-synonym
+      dataset: *gm_geo
+      key: country, synonym
+      value: "*"
 
 cooking:
     entities:

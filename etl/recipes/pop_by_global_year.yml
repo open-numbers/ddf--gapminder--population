@@ -11,7 +11,6 @@ info:
         - &gm_geo open-numbers/ddf--gapminder--geo_entity_domain
 
 config:
-    ddf_dir: /Users/semio/src/work/Gapminder/
     recipes_dir: ./
 
 ingredients:
@@ -38,6 +37,11 @@ ingredients:
       key: global, variant, year, age1yearinterval, gender
       value:
           - population
+
+    - id: gm-geo-synonym
+      dataset: *gm_geo
+      key: country, synonym
+      value: "*"
 
 cooking:
     datapoints:
@@ -301,6 +305,7 @@ cooking:
 
         - procedure: serve
           ingredients:
-              - *bridged
+              # - *bridged
+              - unpop-datapoints-pop-by-global-translated
               - *byage
               - *byagegender

@@ -10,7 +10,6 @@ info:
         - &gm_geo open-numbers/ddf--gapminder--geo_entity_domain
 
 config:
-    ddf_dir: /Users/semio/src/work/Gapminder/
     recipes_dir: ./
 
 ingredients:
@@ -38,6 +37,11 @@ ingredients:
     - id: unpop-entities-country
       dataset: *un_pop
       key: country
+      value: "*"
+
+    - id: gm-geo-synonym
+      dataset: *gm_geo
+      key: country, synonym
       value: "*"
 
 
@@ -109,12 +113,8 @@ cooking:
               column: name
               target_column: country
               dictionary:
-                  base: gm-entities-country
-                  key: ['gapminder_list', 'alternative_1', 'alternative_2', 'alternative_3',
-                        'alternative_4_cdiac', 'pandg', 'god_id', 'alt_5', 'upper_case_name',
-                        'arb1', 'arb2', 'arb3', 'arb4', 'arb5', 'arb6', 'name', 'iso3166_1_alpha2',
-                        'iso3166_1_alpha3', 'iso3166_2'
-                        ]
+                  base: gm-geo-synonym
+                  key: synonym
                   value: country
           result: gmpop-entities-area-aligned
         - procedure: translate_column
@@ -124,12 +124,8 @@ cooking:
               column: name
               target_column: country_gm
               dictionary:
-                  base: gm-entities-country
-                  key: ['gapminder_list', 'alternative_1', 'alternative_2', 'alternative_3',
-                        'alternative_4_cdiac', 'pandg', 'god_id', 'alt_5', 'upper_case_name',
-                        'arb1', 'arb2', 'arb3', 'arb4', 'arb5', 'arb6', 'name', 'iso3166_1_alpha2',
-                        'iso3166_1_alpha3', 'iso3166_2'
-                        ]
+                  base: gm-geo-synonym
+                  key: synonym
                   value: country
           result: unpop-entities-country_code-aligned
 
@@ -153,38 +149,38 @@ cooking:
                   base: unpop-entities-country_code-aligned
                   key: country
                   value: country_gm
-          result: unpop-datapoints-pop-by-country-aligned
+          result: &pop-by-country unpop-datapoints-pop-by-country-aligned
 
 
-        # brige UN and Gapminder hostioric
-        - procedure: translate_header
-          ingredients:
-              - gmpop-datapoints-pop-aligned
-          options:
-              dictionary:
-                  area: country
-                  total_population_with_interpolations: population
-          result: gmpop-datapoints-pop-country
+        # # brige UN and Gapminder hostioric
+        # - procedure: translate_header
+        #   ingredients:
+        #       - gmpop-datapoints-pop-aligned
+        #   options:
+        #       dictionary:
+        #           area: country
+        #           total_population_with_interpolations: population
+        #   result: gmpop-datapoints-pop-country
 
-        - procedure: trend_bridge
-          ingredients:
-              - gmpop-datapoints-pop-country
-          options:
-              bridge_start:
-                  ingredient: gmpop-datapoints-pop-country
-                  column: population
-              bridge_end:
-                  ingredient: unpop-datapoints-pop-by-country-aligned
-                  column: population
-              bridge_on: year
-              bridge_length: 10
-              # debug: true
-          result: &bridged pop-country-bridged
+        # - procedure: trend_bridge
+        #   ingredients:
+        #       - gmpop-datapoints-pop-country
+        #   options:
+        #       bridge_start:
+        #           ingredient: gmpop-datapoints-pop-country
+        #           column: population
+        #       bridge_end:
+        #           ingredient: unpop-datapoints-pop-by-country-aligned
+        #           column: population
+        #       bridge_on: year
+        #       bridge_length: 10
+        #       # debug: true
+        #   result: &bridged pop-country-bridged
 
         # world_4region
         - procedure: translate_column
           ingredients:
-              - *bridged
+              - *pop-by-country
           options:
               column: country
               dictionary:
@@ -214,7 +210,7 @@ cooking:
         # world_6region
         - procedure: translate_column
           ingredients:
-              - *bridged
+              - *pop-by-country
           options:
               column: country
               dictionary:
@@ -243,7 +239,7 @@ cooking:
         # income_groups
         - procedure: translate_column
           ingredients:
-              - *bridged
+              - *pop-by-country
           options:
               column: country
               dictionary:
@@ -272,7 +268,7 @@ cooking:
         # landlocked
         - procedure: translate_column
           ingredients:
-              - *bridged
+              - *pop-by-country
           options:
               column: country
               dictionary:
@@ -302,7 +298,7 @@ cooking:
         # g77_and_oecd_countries
         - procedure: translate_column
           ingredients:
-              - *bridged
+              - *pop-by-country
           options:
               column: country
               dictionary:
@@ -331,7 +327,7 @@ cooking:
         # main_religion_2008
         - procedure: translate_column
           ingredients:
-              - *bridged
+              - *pop-by-country
           options:
               column: country
               dictionary:
@@ -359,7 +355,7 @@ cooking:
 
         - procedure: serve
           ingredients:
-              - *bridged
+              - *pop-by-country
               - *w4r
               - *w6r
               - *income_groups
