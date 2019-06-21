@@ -4,23 +4,21 @@
 info:
     id: pop_by_counrty_age_year
     base:
-        - &gm_pop open-numbers/ddf--gapminder--population_historic
-        - &un_pop harpalshergill/ddf--unpop--wpp_population
-        - &gm_geo open-numbers/ddf--gapminder--geo_entity_domain
+        # - &gm_pop open-numbers/ddf--gapminder--population_historic
+        - &un_pop working/ddf--unpop--wpp_population2019
+        - &gm_geo open-numbers/ddf--open_numbers
 
 config:
     recipes_dir: ./
+    ddf_dir: /Users/semio/src/work/Gapminder/datasets/
 
 ingredients:
     - id: unpop-datapoints-pop-by-country-age
       dataset: *un_pop
-      key: age1yearinterval, country, variant, year
+      key: age1yearinterval, country, time
       value:
           - population
-    - id: gm-entities-country
-      dataset: *gm_geo
-      key: country
-      value: "*"
+
     - id: unpop-entities-country
       dataset: *un_pop
       key: country
@@ -28,7 +26,11 @@ ingredients:
 
     - id: gm-geo-synonym
       dataset: *gm_geo
-      key: country, synonym
+      key: geo, synonym
+      value: "*"
+    - id: gm-entities-country
+      dataset: *gm_geo
+      key: country
       value: "*"
 
 cooking:
@@ -46,59 +48,9 @@ cooking:
           options:
               dictionary:
                   age1yearinterval: age
+                  time: year
           result: unpop-by-age-country-translated
 
-        - procedure: filter
-          ingredients:
-              - unpop-by-age-country-translated
-          options:
-              row:
-                  population:
-                      variant: estimates
-          result: unpop-datapoints-pop-by-country-age-thousands-before-2016
-
-        - procedure: groupby
-          ingredients:
-              - unpop-datapoints-pop-by-country-age-thousands-before-2016
-          options:
-              groupby:
-                  - country
-                  - age
-                  - year
-              aggregate:
-                  population: sum
-          result: unpop-datapoints-pop-by-country-age-thousands-before-2016-novar
-
-        - procedure: filter
-          ingredients:
-              - unpop-by-age-country-translated
-          options:
-              row:
-                  population:
-                      variant: medium_variant
-          result: unpop-datapoints-pop-by-country-age-thousands-2015-and-after
-
-        - procedure: groupby
-          ingredients:
-              - unpop-datapoints-pop-by-country-age-thousands-2015-and-after
-          options:
-              groupby:
-                  - country
-                  - age
-                  - year
-              aggregate:
-                  population: sum
-          result: unpop-datapoints-pop-by-country-age-thousands-2015-and-after-novar
-
-        # 2015 has estimates and medium variant data, and we want to use estimates data.
-        # so we use deep merge to overwrite medium variant with estimates
-        - procedure: merge
-          ingredients:
-              - unpop-datapoints-pop-by-country-age-thousands-2015-and-after-novar
-              - unpop-datapoints-pop-by-country-age-thousands-before-2016-novar
-          options:
-              deep: true
-          result: unpop-datapoints-pop-by-country-age-deduplicated
 
         # translate columns
         - procedure: translate_column
@@ -110,12 +62,12 @@ cooking:
               dictionary:
                   base: gm-geo-synonym
                   key: synonym
-                  value: country
+                  value: geo
           result: unpop-entities-country_code-aligned
 
         - procedure: translate_column
           ingredients:
-              - unpop-datapoints-pop-by-country-age-deduplicated
+              - unpop-by-age-country-translated
           options:
               column: country
               dictionary:

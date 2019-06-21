@@ -3,12 +3,12 @@ info:
     author:  semio<prairy.long@gmail.com> at Gapminder
     version: 0.1
     base:
-        - &gm_pop open-numbers/ddf--gapminder--population_historic
-        - &un_pop harpalshergill/ddf--unpop--wpp_population
-        - &gm_geo open-numbers/ddf--gapminder--geo_entity_domain
+        - &un_pop working/ddf--unpop--wpp_population2019
+        - &gm_geo open-numbers/ddf--open_numbers
 
 config:
     recipes_dir: ./
+    ddf_dir: /Users/semio/src/work/Gapminder/datasets/
 
 include:
     - pop_by_age_country_year.yml
@@ -45,7 +45,7 @@ ingredients:
               - sourceurl
     - id: gm-geo-synonym
       dataset: *gm_geo
-      key: country, synonym
+      key: geo, synonym
       value: "*"
 
 cooking:
