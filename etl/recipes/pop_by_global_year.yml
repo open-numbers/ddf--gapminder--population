@@ -6,12 +6,11 @@
 info:
     id: pop_by_global_year
     base:
-        - &un_pop working/ddf--unpop--wpp_population2019
+        - &un_pop Gapminder/ddf--unpop--wpp_population2019
         - &gm_geo open-numbers/ddf--gapminder--geo_entity_domain
 
 config:
     recipes_dir: ./
-    ddf_dir: /Users/semio/src/work/Gapminder/datasets/
 
 ingredients:
 

@@ -3,12 +3,11 @@ info:
     author:  semio<prairy.long@gmail.com> at Gapminder
     version: 0.1
     base:
-        - &un_pop working/ddf--unpop--wpp_population2019
+        - &un_pop Gapminder/ddf--unpop--wpp_population2019
         - &gm_geo open-numbers/ddf--open_numbers
 
 config:
     recipes_dir: ./
-    ddf_dir: /Users/semio/src/work/Gapminder/datasets/
 
 include:
     - pop_by_age_country_year.yml
