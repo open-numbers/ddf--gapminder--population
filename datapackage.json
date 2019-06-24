@@ -1,19 +1,19 @@
 {
-    "name": "_debug",
+    "name": "ddf--gapminder--population",
     "language": {
         "id": "en"
     },
-    "title": "_debug",
+    "title": "ddf--gapminder--population",
     "description": "",
     "author": "semio<prairy.long@gmail.com> at Gapminder",
     "license": "",
     "base": [
-        "working/ddf--unpop--wpp_population2019",
+        "Gapminder/ddf--unpop--wpp_population2019",
         "open-numbers/ddf--open_numbers"
     ],
     "id": "ddf--gapminder--population",
     "version": 0.1,
-    "created": "2019-06-21T03:30:38.189560+00:00",
+    "created": "2019-06-24T01:45:59.291724+00:00",
     "resources": [
         {
             "name": "ddf--concepts",
