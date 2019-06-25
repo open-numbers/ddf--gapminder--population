@@ -3,9 +3,8 @@ info:
     author:  semio<prairy.long@gmail.com> at Gapminder
     version: 0.1
     base:
-        - &gm_pop open-numbers/ddf--gapminder--population_historic
-        - &un_pop harpalshergill/ddf--unpop--wpp_population
-        - &gm_geo open-numbers/ddf--gapminder--geo_entity_domain
+        - &un_pop Gapminder/ddf--unpop--wpp_population2019
+        - &gm_geo open-numbers/ddf--open_numbers
 
 config:
     recipes_dir: ./
@@ -45,7 +44,7 @@ ingredients:
               - sourceurl
     - id: gm-geo-synonym
       dataset: *gm_geo
-      key: country, synonym
+      key: geo, synonym
       value: "*"
 
 cooking:
