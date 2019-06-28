@@ -13,7 +13,7 @@
     ],
     "id": "ddf--gapminder--population",
     "version": 0.1,
-    "created": "2019-06-24T01:45:59.291724+00:00",
+    "created": "2019-06-28T11:03:12.408460+00:00",
     "resources": [
         {
             "name": "ddf--concepts",
@@ -27,403 +27,37 @@
                         "name": "concept_type"
                     },
                     {
-                        "name": "description"
-                    },
-                    {
-                        "name": "domain"
-                    },
-                    {
                         "name": "name"
                     },
                     {
-                        "name": "scales"
+                        "name": "unit"
+                    },
+                    {
+                        "name": "indicator_url"
+                    },
+                    {
+                        "name": "domain"
                     },
                     {
                         "name": "source_url"
                     },
                     {
                         "name": "tags"
+                    },
+                    {
+                        "name": "scales"
+                    },
+                    {
+                        "name": "drill_up"
+                    },
+                    {
+                        "name": "description"
+                    },
+                    {
+                        "name": "color"
                     }
                 ],
                 "primaryKey": "concept"
-            }
-        },
-        {
-            "name": "ddf--datapoints--population--by--age--g77_and_oecd_countries--gender--year",
-            "path": "ddf--datapoints--population--by--age--g77_and_oecd_countries--gender--year.csv",
-            "schema": {
-                "fields": [
-                    {
-                        "name": "age"
-                    },
-                    {
-                        "name": "g77_and_oecd_countries"
-                    },
-                    {
-                        "name": "gender"
-                    },
-                    {
-                        "name": "year"
-                    },
-                    {
-                        "name": "population"
-                    }
-                ],
-                "primaryKey": [
-                    "age",
-                    "g77_and_oecd_countries",
-                    "gender",
-                    "year"
-                ]
-            }
-        },
-        {
-            "name": "ddf--datapoints--population--by--age--g77_and_oecd_countries--year",
-            "path": "ddf--datapoints--population--by--age--g77_and_oecd_countries--year.csv",
-            "schema": {
-                "fields": [
-                    {
-                        "name": "age"
-                    },
-                    {
-                        "name": "g77_and_oecd_countries"
-                    },
-                    {
-                        "name": "year"
-                    },
-                    {
-                        "name": "population"
-                    }
-                ],
-                "primaryKey": [
-                    "age",
-                    "g77_and_oecd_countries",
-                    "year"
-                ]
-            }
-        },
-        {
-            "name": "ddf--datapoints--population--by--age--gender--global--year",
-            "path": "ddf--datapoints--population--by--age--gender--global--year.csv",
-            "schema": {
-                "fields": [
-                    {
-                        "name": "age"
-                    },
-                    {
-                        "name": "gender"
-                    },
-                    {
-                        "name": "global"
-                    },
-                    {
-                        "name": "year"
-                    },
-                    {
-                        "name": "population"
-                    }
-                ],
-                "primaryKey": [
-                    "age",
-                    "gender",
-                    "global",
-                    "year"
-                ]
-            }
-        },
-        {
-            "name": "ddf--datapoints--population--by--age--gender--income_groups--year",
-            "path": "ddf--datapoints--population--by--age--gender--income_groups--year.csv",
-            "schema": {
-                "fields": [
-                    {
-                        "name": "age"
-                    },
-                    {
-                        "name": "gender"
-                    },
-                    {
-                        "name": "income_groups"
-                    },
-                    {
-                        "name": "year"
-                    },
-                    {
-                        "name": "population"
-                    }
-                ],
-                "primaryKey": [
-                    "age",
-                    "gender",
-                    "income_groups",
-                    "year"
-                ]
-            }
-        },
-        {
-            "name": "ddf--datapoints--population--by--age--gender--landlocked--year",
-            "path": "ddf--datapoints--population--by--age--gender--landlocked--year.csv",
-            "schema": {
-                "fields": [
-                    {
-                        "name": "age"
-                    },
-                    {
-                        "name": "gender"
-                    },
-                    {
-                        "name": "landlocked"
-                    },
-                    {
-                        "name": "year"
-                    },
-                    {
-                        "name": "population"
-                    }
-                ],
-                "primaryKey": [
-                    "age",
-                    "gender",
-                    "landlocked",
-                    "year"
-                ]
-            }
-        },
-        {
-            "name": "ddf--datapoints--population--by--age--gender--main_religion_2008--year",
-            "path": "ddf--datapoints--population--by--age--gender--main_religion_2008--year.csv",
-            "schema": {
-                "fields": [
-                    {
-                        "name": "age"
-                    },
-                    {
-                        "name": "gender"
-                    },
-                    {
-                        "name": "main_religion_2008"
-                    },
-                    {
-                        "name": "year"
-                    },
-                    {
-                        "name": "population"
-                    }
-                ],
-                "primaryKey": [
-                    "age",
-                    "gender",
-                    "main_religion_2008",
-                    "year"
-                ]
-            }
-        },
-        {
-            "name": "ddf--datapoints--population--by--age--gender--world_4region--year",
-            "path": "ddf--datapoints--population--by--age--gender--world_4region--year.csv",
-            "schema": {
-                "fields": [
-                    {
-                        "name": "age"
-                    },
-                    {
-                        "name": "gender"
-                    },
-                    {
-                        "name": "world_4region"
-                    },
-                    {
-                        "name": "year"
-                    },
-                    {
-                        "name": "population"
-                    }
-                ],
-                "primaryKey": [
-                    "age",
-                    "gender",
-                    "world_4region",
-                    "year"
-                ]
-            }
-        },
-        {
-            "name": "ddf--datapoints--population--by--age--gender--world_6region--year",
-            "path": "ddf--datapoints--population--by--age--gender--world_6region--year.csv",
-            "schema": {
-                "fields": [
-                    {
-                        "name": "age"
-                    },
-                    {
-                        "name": "gender"
-                    },
-                    {
-                        "name": "world_6region"
-                    },
-                    {
-                        "name": "year"
-                    },
-                    {
-                        "name": "population"
-                    }
-                ],
-                "primaryKey": [
-                    "age",
-                    "gender",
-                    "world_6region",
-                    "year"
-                ]
-            }
-        },
-        {
-            "name": "ddf--datapoints--population--by--age--global--year",
-            "path": "ddf--datapoints--population--by--age--global--year.csv",
-            "schema": {
-                "fields": [
-                    {
-                        "name": "age"
-                    },
-                    {
-                        "name": "global"
-                    },
-                    {
-                        "name": "year"
-                    },
-                    {
-                        "name": "population"
-                    }
-                ],
-                "primaryKey": [
-                    "age",
-                    "global",
-                    "year"
-                ]
-            }
-        },
-        {
-            "name": "ddf--datapoints--population--by--age--income_groups--year",
-            "path": "ddf--datapoints--population--by--age--income_groups--year.csv",
-            "schema": {
-                "fields": [
-                    {
-                        "name": "age"
-                    },
-                    {
-                        "name": "income_groups"
-                    },
-                    {
-                        "name": "year"
-                    },
-                    {
-                        "name": "population"
-                    }
-                ],
-                "primaryKey": [
-                    "age",
-                    "income_groups",
-                    "year"
-                ]
-            }
-        },
-        {
-            "name": "ddf--datapoints--population--by--age--landlocked--year",
-            "path": "ddf--datapoints--population--by--age--landlocked--year.csv",
-            "schema": {
-                "fields": [
-                    {
-                        "name": "age"
-                    },
-                    {
-                        "name": "landlocked"
-                    },
-                    {
-                        "name": "year"
-                    },
-                    {
-                        "name": "population"
-                    }
-                ],
-                "primaryKey": [
-                    "age",
-                    "landlocked",
-                    "year"
-                ]
-            }
-        },
-        {
-            "name": "ddf--datapoints--population--by--age--main_religion_2008--year",
-            "path": "ddf--datapoints--population--by--age--main_religion_2008--year.csv",
-            "schema": {
-                "fields": [
-                    {
-                        "name": "age"
-                    },
-                    {
-                        "name": "main_religion_2008"
-                    },
-                    {
-                        "name": "year"
-                    },
-                    {
-                        "name": "population"
-                    }
-                ],
-                "primaryKey": [
-                    "age",
-                    "main_religion_2008",
-                    "year"
-                ]
-            }
-        },
-        {
-            "name": "ddf--datapoints--population--by--age--world_4region--year",
-            "path": "ddf--datapoints--population--by--age--world_4region--year.csv",
-            "schema": {
-                "fields": [
-                    {
-                        "name": "age"
-                    },
-                    {
-                        "name": "world_4region"
-                    },
-                    {
-                        "name": "year"
-                    },
-                    {
-                        "name": "population"
-                    }
-                ],
-                "primaryKey": [
-                    "age",
-                    "world_4region",
-                    "year"
-                ]
-            }
-        },
-        {
-            "name": "ddf--datapoints--population--by--age--world_6region--year",
-            "path": "ddf--datapoints--population--by--age--world_6region--year.csv",
-            "schema": {
-                "fields": [
-                    {
-                        "name": "age"
-                    },
-                    {
-                        "name": "world_6region"
-                    },
-                    {
-                        "name": "year"
-                    },
-                    {
-                        "name": "population"
-                    }
-                ],
-                "primaryKey": [
-                    "age",
-                    "world_6region",
-                    "year"
-                ]
             }
         },
         {
@@ -13312,6 +12946,60 @@
             }
         },
         {
+            "name": "ddf--datapoints--population--by--g77_and_oecd_countries--age--gender--year",
+            "path": "ddf--datapoints--population--by--g77_and_oecd_countries--age--gender--year.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "g77_and_oecd_countries"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "g77_and_oecd_countries",
+                    "age",
+                    "gender",
+                    "year"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--population--by--g77_and_oecd_countries--age--year",
+            "path": "ddf--datapoints--population--by--g77_and_oecd_countries--age--year.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "g77_and_oecd_countries"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "g77_and_oecd_countries",
+                    "age",
+                    "year"
+                ]
+            }
+        },
+        {
             "name": "ddf--datapoints--population--by--g77_and_oecd_countries--year",
             "path": "ddf--datapoints--population--by--g77_and_oecd_countries--year.csv",
             "schema": {
@@ -13333,6 +13021,60 @@
             }
         },
         {
+            "name": "ddf--datapoints--population--by--global--year--age--gender",
+            "path": "ddf--datapoints--population--by--global--year--age--gender.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "global"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "global",
+                    "year",
+                    "age",
+                    "gender"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--population--by--global--year--age",
+            "path": "ddf--datapoints--population--by--global--year--age.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "global"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "global",
+                    "year",
+                    "age"
+                ]
+            }
+        },
+        {
             "name": "ddf--datapoints--population--by--global--year",
             "path": "ddf--datapoints--population--by--global--year.csv",
             "schema": {
@@ -13349,6 +13091,60 @@
                 ],
                 "primaryKey": [
                     "global",
+                    "year"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--population--by--income_groups--age--gender--year",
+            "path": "ddf--datapoints--population--by--income_groups--age--gender--year.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "income_groups"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "income_groups",
+                    "age",
+                    "gender",
+                    "year"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--population--by--income_groups--age--year",
+            "path": "ddf--datapoints--population--by--income_groups--age--year.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "income_groups"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "income_groups",
+                    "age",
                     "year"
                 ]
             }
@@ -13375,6 +13171,60 @@
             }
         },
         {
+            "name": "ddf--datapoints--population--by--landlocked--age--gender--year",
+            "path": "ddf--datapoints--population--by--landlocked--age--gender--year.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "landlocked"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "landlocked",
+                    "age",
+                    "gender",
+                    "year"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--population--by--landlocked--age--year",
+            "path": "ddf--datapoints--population--by--landlocked--age--year.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "landlocked"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "landlocked",
+                    "age",
+                    "year"
+                ]
+            }
+        },
+        {
             "name": "ddf--datapoints--population--by--landlocked--year",
             "path": "ddf--datapoints--population--by--landlocked--year.csv",
             "schema": {
@@ -13391,6 +13241,60 @@
                 ],
                 "primaryKey": [
                     "landlocked",
+                    "year"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--population--by--main_religion_2008--age--gender--year",
+            "path": "ddf--datapoints--population--by--main_religion_2008--age--gender--year.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "main_religion_2008"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "main_religion_2008",
+                    "age",
+                    "gender",
+                    "year"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--population--by--main_religion_2008--age--year",
+            "path": "ddf--datapoints--population--by--main_religion_2008--age--year.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "main_religion_2008"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "main_religion_2008",
+                    "age",
                     "year"
                 ]
             }
@@ -13417,6 +13321,60 @@
             }
         },
         {
+            "name": "ddf--datapoints--population--by--world_4region--age--gender--year",
+            "path": "ddf--datapoints--population--by--world_4region--age--gender--year.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "world_4region"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "world_4region",
+                    "age",
+                    "gender",
+                    "year"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--population--by--world_4region--age--year",
+            "path": "ddf--datapoints--population--by--world_4region--age--year.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "world_4region"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "world_4region",
+                    "age",
+                    "year"
+                ]
+            }
+        },
+        {
             "name": "ddf--datapoints--population--by--world_4region--year",
             "path": "ddf--datapoints--population--by--world_4region--year.csv",
             "schema": {
@@ -13433,6 +13391,60 @@
                 ],
                 "primaryKey": [
                     "world_4region",
+                    "year"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--population--by--world_6region--age--gender--year",
+            "path": "ddf--datapoints--population--by--world_6region--age--gender--year.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "world_6region"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "world_6region",
+                    "age",
+                    "gender",
+                    "year"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--population--by--world_6region--age--year",
+            "path": "ddf--datapoints--population--by--world_6region--age--year.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "world_6region"
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "world_6region",
+                    "age",
                     "year"
                 ]
             }
@@ -13741,6 +13753,15 @@
                 "primaryKey": [
                     "concept"
                 ],
+                "value": "color",
+                "resources": [
+                    "ddf--concepts"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "concept"
+                ],
                 "value": "concept_type",
                 "resources": [
                     "ddf--concepts"
@@ -13760,6 +13781,24 @@
                     "concept"
                 ],
                 "value": "domain",
+                "resources": [
+                    "ddf--concepts"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "concept"
+                ],
+                "value": "drill_up",
+                "resources": [
+                    "ddf--concepts"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "concept"
+                ],
+                "value": "indicator_url",
                 "resources": [
                     "ddf--concepts"
                 ]
@@ -13796,6 +13835,15 @@
                     "concept"
                 ],
                 "value": "tags",
+                "resources": [
+                    "ddf--concepts"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "concept"
+                ],
+                "value": "unit",
                 "resources": [
                     "ddf--concepts"
                 ]
@@ -14994,7 +15042,7 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--g77_and_oecd_countries--gender--year"
+                    "ddf--datapoints--population--by--g77_and_oecd_countries--age--gender--year"
                 ]
             },
             {
@@ -15005,7 +15053,7 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--g77_and_oecd_countries--year"
+                    "ddf--datapoints--population--by--g77_and_oecd_countries--age--year"
                 ]
             },
             {
@@ -15017,13 +15065,6 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--g77_and_oecd_countries--gender--year",
-                    "ddf--datapoints--population--by--age--gender--global--year",
-                    "ddf--datapoints--population--by--age--gender--income_groups--year",
-                    "ddf--datapoints--population--by--age--gender--landlocked--year",
-                    "ddf--datapoints--population--by--age--gender--main_religion_2008--year",
-                    "ddf--datapoints--population--by--age--gender--world_4region--year",
-                    "ddf--datapoints--population--by--age--gender--world_6region--year",
                     "ddf--datapoints--population--by--country-abw--age--gender--year",
                     "ddf--datapoints--population--by--country-afg--age--gender--year",
                     "ddf--datapoints--population--by--country-ago--age--gender--year",
@@ -15224,7 +15265,14 @@
                     "ddf--datapoints--population--by--country-yem--age--gender--year",
                     "ddf--datapoints--population--by--country-zaf--age--gender--year",
                     "ddf--datapoints--population--by--country-zmb--age--gender--year",
-                    "ddf--datapoints--population--by--country-zwe--age--gender--year"
+                    "ddf--datapoints--population--by--country-zwe--age--gender--year",
+                    "ddf--datapoints--population--by--g77_and_oecd_countries--age--gender--year",
+                    "ddf--datapoints--population--by--global--year--age--gender",
+                    "ddf--datapoints--population--by--income_groups--age--gender--year",
+                    "ddf--datapoints--population--by--landlocked--age--gender--year",
+                    "ddf--datapoints--population--by--main_religion_2008--age--gender--year",
+                    "ddf--datapoints--population--by--world_4region--age--gender--year",
+                    "ddf--datapoints--population--by--world_6region--age--gender--year"
                 ]
             },
             {
@@ -15236,7 +15284,7 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--gender--global--year"
+                    "ddf--datapoints--population--by--global--year--age--gender"
                 ]
             },
             {
@@ -15248,7 +15296,7 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--gender--income_groups--year"
+                    "ddf--datapoints--population--by--income_groups--age--gender--year"
                 ]
             },
             {
@@ -15260,7 +15308,7 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--gender--landlocked--year"
+                    "ddf--datapoints--population--by--landlocked--age--gender--year"
                 ]
             },
             {
@@ -15272,7 +15320,7 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--gender--main_religion_2008--year"
+                    "ddf--datapoints--population--by--main_religion_2008--age--gender--year"
                 ]
             },
             {
@@ -15284,7 +15332,7 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--gender--world_4region--year"
+                    "ddf--datapoints--population--by--world_4region--age--gender--year"
                 ]
             },
             {
@@ -15296,7 +15344,7 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--gender--world_6region--year"
+                    "ddf--datapoints--population--by--world_6region--age--gender--year"
                 ]
             },
             {
@@ -15307,13 +15355,6 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--g77_and_oecd_countries--year",
-                    "ddf--datapoints--population--by--age--global--year",
-                    "ddf--datapoints--population--by--age--income_groups--year",
-                    "ddf--datapoints--population--by--age--landlocked--year",
-                    "ddf--datapoints--population--by--age--main_religion_2008--year",
-                    "ddf--datapoints--population--by--age--world_4region--year",
-                    "ddf--datapoints--population--by--age--world_6region--year",
                     "ddf--datapoints--population--by--country-abw--age--year",
                     "ddf--datapoints--population--by--country-afg--age--year",
                     "ddf--datapoints--population--by--country-ago--age--year",
@@ -15514,7 +15555,14 @@
                     "ddf--datapoints--population--by--country-yem--age--year",
                     "ddf--datapoints--population--by--country-zaf--age--year",
                     "ddf--datapoints--population--by--country-zmb--age--year",
-                    "ddf--datapoints--population--by--country-zwe--age--year"
+                    "ddf--datapoints--population--by--country-zwe--age--year",
+                    "ddf--datapoints--population--by--g77_and_oecd_countries--age--year",
+                    "ddf--datapoints--population--by--global--year--age",
+                    "ddf--datapoints--population--by--income_groups--age--year",
+                    "ddf--datapoints--population--by--landlocked--age--year",
+                    "ddf--datapoints--population--by--main_religion_2008--age--year",
+                    "ddf--datapoints--population--by--world_4region--age--year",
+                    "ddf--datapoints--population--by--world_6region--age--year"
                 ]
             },
             {
@@ -15525,7 +15573,7 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--global--year"
+                    "ddf--datapoints--population--by--global--year--age"
                 ]
             },
             {
@@ -15536,7 +15584,7 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--income_groups--year"
+                    "ddf--datapoints--population--by--income_groups--age--year"
                 ]
             },
             {
@@ -15547,7 +15595,7 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--landlocked--year"
+                    "ddf--datapoints--population--by--landlocked--age--year"
                 ]
             },
             {
@@ -15558,7 +15606,7 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--main_religion_2008--year"
+                    "ddf--datapoints--population--by--main_religion_2008--age--year"
                 ]
             },
             {
@@ -15569,7 +15617,7 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--world_4region--year"
+                    "ddf--datapoints--population--by--world_4region--age--year"
                 ]
             },
             {
@@ -15580,7 +15628,7 @@
                 ],
                 "value": "population",
                 "resources": [
-                    "ddf--datapoints--population--by--age--world_6region--year"
+                    "ddf--datapoints--population--by--world_6region--age--year"
                 ]
             },
             {
