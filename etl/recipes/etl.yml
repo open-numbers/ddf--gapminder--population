@@ -87,3 +87,11 @@ cooking:
         - procedure: serve
           ingredients:
               - concepts_final
+          options:
+              custom_column_order:
+                  concept_type: 11
+                  name: 10
+                  unit: 9
+                  indicator_url: 8
+                  description: -1
+                  color: -2
