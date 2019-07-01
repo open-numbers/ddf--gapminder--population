@@ -33,6 +33,10 @@ ingredients:
       dataset: *gm_geo
       key: concept
       value: "*"
+      filter:
+          concept:
+              $nin:
+                  - time
     - id: unpop-concepts-entities
       dataset: *un_pop
       key: concept
@@ -46,6 +50,23 @@ ingredients:
       dataset: *gm_geo
       key: geo, synonym
       value: "*"
+    - id: concept_tags  # add tags for some concepts
+      key: concept
+      data:
+          - concept: age
+            tags: _none
+          - concept: gender
+            tags: _none
+          - concept: population
+            tags: _none
+          - concept: parent
+            tags: _none
+          - concept: tag
+            tags: _none
+          - concept: topojson
+            tags: _none
+          - concept: year
+            tags: _none
 
 cooking:
     entities:
@@ -81,6 +102,7 @@ cooking:
               - extracted_concepts
               - gm-concepts-geo
               - unpop-concepts-entities
+              - concept_tags
           options:
               deep: true
           result: concepts_final
