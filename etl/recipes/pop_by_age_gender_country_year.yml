@@ -265,12 +265,68 @@ cooking:
               path: ddf--datapoints--population--by--country--age--gender--year
               split_datapoints_by:
                   - country
+              custom_key_order:
+                  - country
+                  - age
+                  - gender
+                  - year
 
         - procedure: serve
           ingredients:
               - *w4r
+          options:
+              custom_key_order:
+                  - world_4region
+                  - age
+                  - gender
+                  - year
+
+        - procedure: serve
+          ingredients:
               - *w6r
+          options:
+              custom_key_order:
+                  - world_6region
+                  - age
+                  - gender
+                  - year
+
+        - procedure: serve
+          ingredients:
               - *income
+          options:
+              custom_key_order:
+                  - income_groups
+                  - age
+                  - gender
+                  - year
+
+        - procedure: serve
+          ingredients:
               - *landlocked
+          options:
+              custom_key_order:
+                  - landlocked
+                  - age
+                  - gender
+                  - year
+
+        - procedure: serve
+          ingredients:
               - *g77
+          options:
+              custom_key_order:
+                  - g77_and_oecd_countries
+                  - age
+                  - gender
+                  - year
+
+        - procedure: serve
+          ingredients:
               - *religion
+          options:
+              custom_key_order:
+                  - main_religion_2008
+                  - age
+                  - gender
+                  - year
