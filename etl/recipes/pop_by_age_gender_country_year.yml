@@ -26,7 +26,7 @@ ingredients:
       value: "*"
     - id: gm-geo-synonym
       dataset: *gm_geo
-      key: geo, synonym
+      key: country, synonym
       value: "*"
 
 cooking:
@@ -57,7 +57,7 @@ cooking:
               dictionary:
                   base: gm-geo-synonym
                   key: synonym
-                  value: geo
+                  value: country
           result: unpop-entities-country_code-aligned
 
         - procedure: translate_column

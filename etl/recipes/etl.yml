@@ -48,7 +48,7 @@ ingredients:
               - sourceurl
     - id: gm-geo-synonym
       dataset: *gm_geo
-      key: geo, synonym
+      key: country, synonym
       value: "*"
     - id: concept_tags  # add tags for some concepts
       key: concept
@@ -66,6 +66,8 @@ ingredients:
           - concept: topojson
             tags: _none
           - concept: year
+            tags: _none
+          - concept: source_url
             tags: _none
 
 cooking:
