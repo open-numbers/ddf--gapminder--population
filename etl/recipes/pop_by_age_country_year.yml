@@ -4,7 +4,7 @@
 info:
     id: pop_by_counrty_age_year
     base:
-        - &un_pop Gapminder/ddf--unpop--wpp_population2019
+        - &un_pop open-numbers/ddf--unpop--world_population_prospects
         - &gm_geo open-numbers/ddf--open_numbers
 
 config:
