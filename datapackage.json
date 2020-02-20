@@ -11,7 +11,7 @@
         "Gapminder/ddf--unpop--wpp_population2019",
         "open-numbers/ddf--open_numbers"
     ],
-    "created": "2020-02-07T12:26:04.639759+00:00",
+    "created": "2020-02-20T12:32:43.407915+00:00",
     "id": "ddf--gapminder--population",
     "version": 0.1,
     "resources": [
@@ -13678,6 +13678,24 @@
             }
         },
         {
+            "name": "ddf--entities--geo--unicef_region",
+            "path": "ddf--entities--geo--unicef_region.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "unicef_region"
+                    },
+                    {
+                        "name": "is--unicef_region"
+                    },
+                    {
+                        "name": "name"
+                    }
+                ],
+                "primaryKey": "unicef_region"
+            }
+        },
+        {
             "name": "ddf--entities--geo--world_4region",
             "path": "ddf--entities--geo--world_4region.csv",
             "schema": {
@@ -14085,6 +14103,24 @@
                 "primaryKey": [
                     "geo"
                 ],
+                "value": "is--unicef_region",
+                "resources": [
+                    "ddf--entities--geo--unicef_region"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "unicef_region"
+                ],
+                "value": "is--unicef_region",
+                "resources": [
+                    "ddf--entities--geo--unicef_region"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo"
+                ],
                 "value": "is--world_4region",
                 "resources": [
                     "ddf--entities--geo--world_4region"
@@ -14357,6 +14393,7 @@
                     "ddf--entities--geo--income_groups",
                     "ddf--entities--geo--landlocked",
                     "ddf--entities--geo--main_religion_2008",
+                    "ddf--entities--geo--unicef_region",
                     "ddf--entities--geo--world_4region",
                     "ddf--entities--geo--world_6region"
                 ]
@@ -14395,6 +14432,15 @@
                 "value": "name",
                 "resources": [
                     "ddf--entities--geo--main_religion_2008"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "unicef_region"
+                ],
+                "value": "name",
+                "resources": [
+                    "ddf--entities--geo--unicef_region"
                 ]
             },
             {
