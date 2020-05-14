@@ -5,10 +5,12 @@ country,entity_set,Country,,https://github.com/open-numbers/ddf--gapminder--dim_
 description,string,Description,,,,,_none,,,,
 domain,string,Domain,,,,,_none,,,,
 drill_up,string,drill ups,,,,,_none,,,,
+format,string,Format,,,,,_none,,,value formatter settings: add 'format' concept property to your measures then use 'percent' to add % sign or 'share' to multiply x100 and add a % sign,
 g77_and_oecd_countries,entity_set,G77 and OECD countries,,https://docs.google.com/spreadsheet/pub?key=tVI_UCwI1enCk4p61fWxUig,geo,,categorizations,,,,"{""palette"": {""others"": ""#f05656"", ""oecd"": ""#71c44c"", ""g77"": ""#7487ef""}}"
 gender,entity_domain,Gender,,,,,_none,,,,
 geo,entity_domain,Geographic location,,https://github.com/open-numbers/ddf--gapminder--dim_geo_countries_and_groups/blob/master/ddf--list--geo--country.csv,,,_none,,,,
 global,entity_set,World,,,geo,,_none,,,,
+income_3groups,entity_set,Income Groups (3 levels),,,geo,,categorizations,,,,
 income_groups,entity_set,Income groups,,https://docs.google.com/spreadsheet/pub?key=phT4mwjvEuGCSmAe5aq7HKw,geo,,categorizations,,,,"{""palette"": {""upper_middle_income"": ""#a7cb7d"", ""lower_middle_income"": ""#7ea1d1"", ""high_income"": ""#7bc135"", ""low_income"": ""#4366f4""}}"
 indicator_url,string,Indicator url,,,,,_none,,,,
 iso3166_1_alpha2,string,ISO 3166-1 alpha-2,,http://www.iso.org/iso/home/standards/country_codes.htm,,,_none,,,,
@@ -20,6 +22,7 @@ latitude,measure,Latitude,degrees,https://github.com/open-numbers/ddf--gapminder
 longitude,measure,Longitude,degrees,https://github.com/open-numbers/ddf--gapminder--dim_geo_countries_and_groups/blob/master/ddf--list--geo--country.csv,,,_none,"[""linear""]",,,
 main_religion_2008,entity_set,Main religion 2008,,https://docs.google.com/spreadsheet/pub?key=0ArtujvvFrPjVdHUzTGVicFJZQ1NjaFhqelV5SDNxMVE,geo,,categorizations,,,,"{""palette"": {""muslim"": ""#71c44c"", ""christian"": ""#7487ef"", ""eastern_religions"": ""#f05656""}, ""selectable"": false}"
 name,string,Name,,,,,_none,,,,
+name_catalog,string,Name Catalog,,,,,_none,,,,
 name_long,string,Name Long,,,,,_none,,,,
 name_short,string,Name Short,,,,,_none,,,,
 parent,string,Parent,,,,,_none,,,,
