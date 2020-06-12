@@ -3,12 +3,10 @@ info:
     author:  semio<prairy.long@gmail.com> at Gapminder
     version: 0.1
     base:
-        - &gm_pop ddf--gapminder--population_historic
-        - &un_pop ddf--unpop--wpp_population
-        - &gm_geo ddf--gapminder--geo_entity_domain
+        - &un_pop open-numbers/ddf--unpop--world_population_prospects
+        - &gm_geo open-numbers/ddf--open_numbers
 
 config:
-    ddf_dir: /Users/semio/src/work/Gapminder/datasets
     recipes_dir: ./
 
 include:
@@ -35,6 +33,10 @@ ingredients:
       dataset: *gm_geo
       key: concept
       value: "*"
+      filter:
+          concept:
+              $nin:
+                  - time
     - id: unpop-concepts-entities
       dataset: *un_pop
       key: concept
@@ -44,6 +46,29 @@ ingredients:
               - age
               - gender
               - sourceurl
+    - id: gm-geo-synonym
+      dataset: *gm_geo
+      key: country, synonym
+      value: "*"
+    - id: concept_tags  # add tags for some concepts
+      key: concept
+      data:
+          - concept: age
+            tags: _none
+          - concept: gender
+            tags: _none
+          - concept: population
+            tags: _none
+          - concept: parent
+            tags: _none
+          - concept: tag
+            tags: _none
+          - concept: topojson
+            tags: _none
+          - concept: year
+            tags: _none
+          - concept: source_url
+            tags: _none
 
 cooking:
     entities:
@@ -79,9 +104,18 @@ cooking:
               - extracted_concepts
               - gm-concepts-geo
               - unpop-concepts-entities
+              - concept_tags
           options:
               deep: true
           result: concepts_final
         - procedure: serve
           ingredients:
               - concepts_final
+          options:
+              custom_column_order:
+                  concept_type: 11
+                  name: 10
+                  unit: 9
+                  indicator_url: 8
+                  description: -1
+                  color: -2

@@ -4,26 +4,30 @@
 info:
     id: pop_by_counrty_age_year
     base:
-        - &gm_pop ddf--gapminder--population_historic
-        - &un_pop ddf--unpop--wpp_population
-        - &gm_geo ddf--gapminder--geo_entity_domain
+        - &un_pop open-numbers/ddf--unpop--world_population_prospects
+        - &gm_geo open-numbers/ddf--open_numbers
 
 config:
-    ddf_dir: /Users/semio/src/work/Gapminder/
     recipes_dir: ./
 
 ingredients:
     - id: unpop-datapoints-pop-by-country-age
       dataset: *un_pop
-      key: age1yearinterval, country, variant, year
+      key: age1yearinterval, country, time
       value:
           - population
-    - id: gm-entities-country
-      dataset: *gm_geo
-      key: country
-      value: "*"
+
     - id: unpop-entities-country
       dataset: *un_pop
+      key: country
+      value: "*"
+
+    - id: gm-geo-synonym
+      dataset: *gm_geo
+      key: country, synonym
+      value: "*"
+    - id: gm-entities-country
+      dataset: *gm_geo
       key: country
       value: "*"
 
@@ -42,59 +46,9 @@ cooking:
           options:
               dictionary:
                   age1yearinterval: age
+                  time: year
           result: unpop-by-age-country-translated
 
-        - procedure: filter_row
-          ingredients:
-              - unpop-by-age-country-translated
-          options:
-              filters:
-                  population:
-                      variant: estimates
-          result: unpop-datapoints-pop-by-country-age-thousands-before-2016
-
-        - procedure: groupby
-          ingredients:
-              - unpop-datapoints-pop-by-country-age-thousands-before-2016
-          options:
-              groupby:
-                  - country
-                  - age
-                  - year
-              aggregate:
-                  population: sum
-          result: unpop-datapoints-pop-by-country-age-thousands-before-2016-novar
-
-        - procedure: filter_row
-          ingredients:
-              - unpop-by-age-country-translated
-          options:
-              filters:
-                  population:
-                      variant: medium_variant
-          result: unpop-datapoints-pop-by-country-age-thousands-2015-and-after
-
-        - procedure: groupby
-          ingredients:
-              - unpop-datapoints-pop-by-country-age-thousands-2015-and-after
-          options:
-              groupby:
-                  - country
-                  - age
-                  - year
-              aggregate:
-                  population: sum
-          result: unpop-datapoints-pop-by-country-age-thousands-2015-and-after-novar
-
-        # 2015 has estimates and medium variant data, and we want to use estimates data.
-        # so we use deep merge to overwrite medium variant with estimates
-        - procedure: merge
-          ingredients:
-              - unpop-datapoints-pop-by-country-age-thousands-2015-and-after-novar
-              - unpop-datapoints-pop-by-country-age-thousands-before-2016-novar
-          options:
-              deep: true
-          result: unpop-datapoints-pop-by-country-age-deduplicated
 
         # translate columns
         - procedure: translate_column
@@ -104,18 +58,14 @@ cooking:
               column: name
               target_column: country_gm
               dictionary:
-                  base: gm-entities-country
-                  key: ['gapminder_list', 'alternative_1', 'alternative_2', 'alternative_3',
-                        'alternative_4_cdiac', 'pandg', 'god_id', 'alt_5', 'upper_case_name',
-                        'arb1', 'arb2', 'arb3', 'arb4', 'arb5', 'arb6', 'name', 'iso3166_1_alpha2',
-                        'iso3166_1_alpha3', 'iso3166_2'
-                        ]
+                  base: gm-geo-synonym
+                  key: synonym
                   value: country
           result: unpop-entities-country_code-aligned
 
         - procedure: translate_column
           ingredients:
-              - unpop-datapoints-pop-by-country-age-deduplicated
+              - unpop-by-age-country-translated
           options:
               column: country
               dictionary:
@@ -309,6 +259,10 @@ cooking:
           ingredients:
               - *final
           options:
+              custom_key_order:
+                  - country
+                  - age
+                  - year
               path: ddf--datapoints--population--by--country--age--year
               split_datapoints_by:
                   - country
@@ -316,8 +270,53 @@ cooking:
         - procedure: serve
           ingredients:
               - *w4r
+          options:
+              custom_key_order:
+                  - world_4region
+                  - age
+                  - year
+
+        - procedure: serve
+          ingredients:
               - *w6r
+          options:
+              custom_key_order:
+                  - world_6region
+                  - age
+                  - year
+
+        - procedure: serve
+          ingredients:
               - *income
+          options:
+              custom_key_order:
+                  - income_groups
+                  - age
+                  - year
+
+        - procedure: serve
+          ingredients:
               - *landlocked
+          options:
+              custom_key_order:
+                  - landlocked
+                  - age
+                  - year
+
+        - procedure: serve
+          ingredients:
               - *g77
+          options:
+              custom_key_order:
+                  - g77_and_oecd_countries
+                  - age
+                  - year
+
+        - procedure: serve
+          ingredients:
               - *religion
+          options:
+              custom_key_order:
+                  - main_religion_2008
+                  - age
+                  - year
