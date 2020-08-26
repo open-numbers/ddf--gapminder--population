@@ -1,7 +1,7 @@
 concept,concept_type,name,unit,indicator_url,domain,source_url,tags,scales,drill_up,description,color
 age,entity_domain,Age,,,,,_none,,,,
 color,string,Color,,,,,_none,,,,
-country,entity_set,Country,,https://github.com/open-numbers/ddf--gapminder--dim_geo_countries_and_groups/blob/master/ddf--list--geo--country.csv,geo,,categorizations,,"[""world_6region"", ""income_groups"", ""landlocked"", ""g77_and_oecd_countries"", ""main_religion_2008"", ""world_4region"", ""unicef_region""]",,
+country,entity_set,Country,,https://github.com/open-numbers/ddf--gapminder--dim_geo_countries_and_groups/blob/master/ddf--list--geo--country.csv,geo,,categorizations,,"[""world_6region"", ""income_groups"", ""landlocked"", ""g77_and_oecd_countries"", ""main_religion_2008"", ""world_4region"", ""unicef_region"", ""un_sdg_ldc"", ""un_sdg_region""]",,
 description,string,Description,,,,,_none,,,,
 domain,string,Domain,,,,,_none,,,,
 drill_up,string,drill ups,,,,,_none,,,,
@@ -35,6 +35,8 @@ synonym,string,Synonym,,,,,_none,,,,
 tag,entity_domain,Tag,,,,,_none,,,,
 tags,string,Tags,,,,,_none,,,,
 topojson,string,TopoJSON,,,,,_none,,,,
+un_sdg_ldc,entity_set,UN SDG Least Developed Countries,,https://unstats.un.org/sdgs/indicators/regional-groups,geo,,categorizations,,,,"{""palette"": {""un_least_developed"": ""#dc2339"", ""un_not_least_developed"": ""#23DCC6""}}"
+un_sdg_region,entity_set,UN SDG Regions,,https://unstats.un.org/sdgs/indicators/regional-groups,geo,,categorizations,,,,"{""palette"": {""un_sub_saharan_africa"":""#e11484"",""un_northern_africa_and_western_asia"":""#f99d26"",""un_central_and_southern_asia"":""#f36d25"",""un_eastern_and_south_eastern_asia"":""#279b48"",""un_oceania_exc_australia_and_new_zealand"":""#8f1838"",""un_latin_america_and_the_caribbean"":""#00aed9"",""un_australia_and_new_zealand"":""#eb1c2d"",""un_europe_and_northern_america"":""#02558b""}, ""selectable"": false}"
 un_state,boolean,UN member states and permanent observers,,https://www.un.org/en/member-states/index.html,,,_none,,,,
 unicef_region,entity_set,UNICEF regions,,https://docs.google.com/spreadsheets/d/1POAjAhMgUjv6Mt_FSVSgzAr7c6oUvzinpQPvhfmOuuU,geo,,categorizations,,,,"{""palette"": {""sa"": ""#961a49"", ""eca"": ""#ffc20e"", ""mena"": ""#374ea2"", ""ssa"": ""#6a1e74"", ""lac"": ""#f26a21"", ""eap"": ""#e2231a"", ""na"": ""#00833d""}}"
 unicode_region_subtag,string,Unicode CLDR Region subtag,,http://www.unicode.org/reports/tr35/#unicode_region_subtag_validity,,,_none,,,,
