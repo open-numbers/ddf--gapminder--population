@@ -11,7 +11,7 @@
         "Gapminder/ddf--unpop--wpp_population2019",
         "open-numbers/ddf--open_numbers"
     ],
-    "created": "2021-03-24T12:27:21.999776+00:00",
+    "created": "2021-06-25T12:15:11.601835+00:00",
     "id": "ddf--gapminder--population",
     "version": 0.1,
     "resources": [
@@ -13557,6 +13557,9 @@
                         "name": "un_state"
                     },
                     {
+                        "name": "unhcr_region"
+                    },
+                    {
                         "name": "unicef_region"
                     },
                     {
@@ -14896,6 +14899,24 @@
                 "value": "un_state",
                 "resources": [
                     "ddf--entities--geo",
+                    "ddf--entities--geo--country"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "country"
+                ],
+                "value": "unhcr_region",
+                "resources": [
+                    "ddf--entities--geo--country"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo"
+                ],
+                "value": "unhcr_region",
+                "resources": [
                     "ddf--entities--geo--country"
                 ]
             },
