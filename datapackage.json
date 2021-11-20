@@ -11,7 +11,7 @@
         "Gapminder/ddf--unpop--wpp_population2019",
         "open-numbers/ddf--open_numbers"
     ],
-    "created": "2021-11-16T12:43:21.854702+00:00",
+    "created": "2021-11-20T12:39:24.145908+00:00",
     "id": "ddf--gapminder--population",
     "version": 0.1,
     "resources": [
@@ -39,16 +39,16 @@
                         "name": "domain"
                     },
                     {
-                        "name": "source_url"
-                    },
-                    {
-                        "name": "tags"
+                        "name": "drill_up"
                     },
                     {
                         "name": "scales"
                     },
                     {
-                        "name": "drill_up"
+                        "name": "source_url"
+                    },
+                    {
+                        "name": "tags"
                     },
                     {
                         "name": "description"
