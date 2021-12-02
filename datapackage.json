@@ -11,7 +11,7 @@
         "Gapminder/ddf--unpop--wpp_population2019",
         "open-numbers/ddf--open_numbers"
     ],
-    "created": "2021-11-20T12:39:24.145908+00:00",
+    "created": "2021-12-02T12:39:37.229955+00:00",
     "id": "ddf--gapminder--population",
     "version": 0.1,
     "resources": [
@@ -13566,6 +13566,9 @@
                         "name": "unicode_region_subtag"
                     },
                     {
+                        "name": "west_and_rest"
+                    },
+                    {
                         "name": "world_4region"
                     },
                     {
@@ -15057,6 +15060,24 @@
                 "value": "unicode_region_subtag",
                 "resources": [
                     "ddf--entities--geo--global"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "country"
+                ],
+                "value": "west_and_rest",
+                "resources": [
+                    "ddf--entities--geo--country"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geo"
+                ],
+                "value": "west_and_rest",
+                "resources": [
+                    "ddf--entities--geo--country"
                 ]
             },
             {
