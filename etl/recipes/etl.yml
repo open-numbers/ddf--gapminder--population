@@ -23,7 +23,7 @@ ingredients:
       value: "*"
     - id: unpop-entities-age
       dataset: *un_pop
-      key: age1yearinterval
+      key: age_group_1year
       value: "*"
     - id: unpop-entities-gender
       dataset: *un_pop
@@ -77,7 +77,7 @@ cooking:
               - unpop-entities-age
           options:
               dictionary:
-                  age1yearinterval: age
+                  age_group_1year: age
           result: unpop-entities-age-final
         - procedure: serve
           ingredients:

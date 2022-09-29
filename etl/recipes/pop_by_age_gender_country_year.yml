@@ -13,7 +13,7 @@ config:
 ingredients:
     - id: unpop-datapoints-pop-by-country-age-gender
       dataset: *un_pop
-      key: age1yearinterval, gender, country, time
+      key: age_group_1year, sex, country_area, time
       value:
           - population
     - id: gm-entities-country
@@ -22,7 +22,7 @@ ingredients:
       value: "*"
     - id: unpop-entities-country
       dataset: *un_pop
-      key: country
+      key: country_area
       value: "*"
     - id: gm-geo-synonym
       dataset: *gm_geo
@@ -43,7 +43,9 @@ cooking:
               - unpop-datapoints-pop-by-country-age-gender-thousands
           options:
               dictionary:
-                  age1yearinterval: age
+                  age_group_1year: age
+                  country_area: country
+                  sex: gender
                   time: year
           result: unpop-by-age-gender-country-translated
 
@@ -67,7 +69,7 @@ cooking:
               column: country
               dictionary:
                   base: unpop-entities-country_code-aligned
-                  key: country
+                  key: country_area
                   value: country_gm
           result: &final unpop-datapoints-pop-by-country-age-gender-aligned
 

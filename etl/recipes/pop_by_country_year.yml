@@ -29,13 +29,13 @@ ingredients:
 
     - id: unpop-datapoints-pop-by-country
       dataset: *un_pop
-      key: country, time
+      key: country_area, time
       value:
           - population
 
     - id: unpop-entities-country
       dataset: *un_pop
-      key: country
+      key: country_area
       value: "*"
 
     - id: gm-geo-synonym
@@ -52,6 +52,7 @@ cooking:
           result: unpop-datapoints-pop-by-country-translated
           options:
               dictionary:
+                  country_area: country
                   time: year
         - procedure: run_op
           ingredients:
@@ -103,7 +104,7 @@ cooking:
               column: country
               dictionary:
                   base: unpop-entities-country_code-aligned
-                  key: country
+                  key: country_area
                   value: country_gm
           result: &pop-by-country unpop-datapoints-pop-by-country-aligned
 
