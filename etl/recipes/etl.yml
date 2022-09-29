@@ -27,7 +27,7 @@ ingredients:
       value: "*"
     - id: unpop-entities-gender
       dataset: *un_pop
-      key: gender
+      key: sex
       value: "*"
     - id: gm-concepts-geo
       dataset: *gm_geo
@@ -44,8 +44,7 @@ ingredients:
       filter:
           concept:
               - age
-              - gender
-              - sourceurl
+              - sex
     - id: gm-geo-synonym
       dataset: *gm_geo
       key: country, synonym
@@ -55,7 +54,7 @@ ingredients:
       data:
           - concept: age
             tags: _none
-          - concept: gender
+          - concept: sex
             tags: _none
           - concept: population
             tags: _none
@@ -67,8 +66,6 @@ ingredients:
             tags: _none
           - concept: year
             tags: _none
-          - concept: source_url
-            tags: _none
 
 cooking:
     entities:
@@ -79,10 +76,17 @@ cooking:
               dictionary:
                   age_group_1year: age
           result: unpop-entities-age-final
+        - procedure: translate_header
+          ingredients:
+              - unpop-entities-gender
+          options:
+              dictionary:
+                  sex: gender
+          result: unpop-entities-gender-final
         - procedure: serve
           ingredients:
               - gm-entities-geo
-              - unpop-entities-gender
+              - unpop-entities-gender-final
         - procedure: serve
           ingredients:
               - unpop-entities-age-final
