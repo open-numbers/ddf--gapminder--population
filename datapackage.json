@@ -8,12 +8,12 @@
     "author": "semio<prairy.long@gmail.com> at Gapminder",
     "license": "",
     "base": [
-        "Gapminder/ddf--unpop--wpp_population2019",
+        "open-numbers/ddf--unpop--world_population_prospects",
         "open-numbers/ddf--open_numbers"
     ],
-    "created": "2024-01-25T12:30:12.332730+00:00",
     "id": "ddf--gapminder--population",
     "version": 0.1,
+    "created": "2024-07-17T03:38:12.707170+00:00",
     "resources": [
         {
             "name": "ddf--concepts",
@@ -39,16 +39,16 @@
                         "name": "domain"
                     },
                     {
-                        "name": "drill_up"
+                        "name": "source_url"
+                    },
+                    {
+                        "name": "tags"
                     },
                     {
                         "name": "scales"
                     },
                     {
-                        "name": "source_url"
-                    },
-                    {
-                        "name": "tags"
+                        "name": "drill_up"
                     },
                     {
                         "name": "description"
@@ -3096,6 +3096,40 @@
                         "constraints": {
                             "enum": [
                                 "hnd"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "gender"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "country",
+                    "age",
+                    "gender",
+                    "year"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--population--by--country-hos--age--gender--year",
+            "path": "ddf--datapoints--population--by--country--age--gender--year/ddf--datapoints--population--by--country-hos--age--gender--year.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "country",
+                        "constraints": {
+                            "enum": [
+                                "hos"
                             ]
                         }
                     },
@@ -10751,6 +10785,36 @@
             }
         },
         {
+            "name": "ddf--datapoints--population--by--country-hos--age--year",
+            "path": "ddf--datapoints--population--by--country--age--year/ddf--datapoints--population--by--country-hos--age--year.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "country",
+                        "constraints": {
+                            "enum": [
+                                "hos"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "age"
+                    },
+                    {
+                        "name": "year"
+                    },
+                    {
+                        "name": "population"
+                    }
+                ],
+                "primaryKey": [
+                    "country",
+                    "age",
+                    "year"
+                ]
+            }
+        },
+        {
             "name": "ddf--datapoints--population--by--country-hrv--age--year",
             "path": "ddf--datapoints--population--by--country--age--year/ddf--datapoints--population--by--country-hrv--age--year.csv",
             "schema": {
@@ -17335,6 +17399,7 @@
                     "ddf--datapoints--population--by--country-guy--age--gender--year",
                     "ddf--datapoints--population--by--country-hkg--age--gender--year",
                     "ddf--datapoints--population--by--country-hnd--age--gender--year",
+                    "ddf--datapoints--population--by--country-hos--age--gender--year",
                     "ddf--datapoints--population--by--country-hrv--age--gender--year",
                     "ddf--datapoints--population--by--country-hti--age--gender--year",
                     "ddf--datapoints--population--by--country-hun--age--gender--year",
@@ -17580,6 +17645,7 @@
                     "ddf--datapoints--population--by--country-guy--age--year",
                     "ddf--datapoints--population--by--country-hkg--age--year",
                     "ddf--datapoints--population--by--country-hnd--age--year",
+                    "ddf--datapoints--population--by--country-hos--age--year",
                     "ddf--datapoints--population--by--country-hrv--age--year",
                     "ddf--datapoints--population--by--country-hti--age--year",
                     "ddf--datapoints--population--by--country-hun--age--year",
@@ -17849,6 +17915,7 @@
                     "ddf--datapoints--population--by--country-guy--age--gender--year",
                     "ddf--datapoints--population--by--country-hkg--age--gender--year",
                     "ddf--datapoints--population--by--country-hnd--age--gender--year",
+                    "ddf--datapoints--population--by--country-hos--age--gender--year",
                     "ddf--datapoints--population--by--country-hrv--age--gender--year",
                     "ddf--datapoints--population--by--country-hti--age--gender--year",
                     "ddf--datapoints--population--by--country-hun--age--gender--year",
@@ -18185,6 +18252,7 @@
                     "ddf--datapoints--population--by--country-guy--age--year",
                     "ddf--datapoints--population--by--country-hkg--age--year",
                     "ddf--datapoints--population--by--country-hnd--age--year",
+                    "ddf--datapoints--population--by--country-hos--age--year",
                     "ddf--datapoints--population--by--country-hrv--age--year",
                     "ddf--datapoints--population--by--country-hti--age--year",
                     "ddf--datapoints--population--by--country-hun--age--year",

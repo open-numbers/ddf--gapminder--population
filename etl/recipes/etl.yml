@@ -75,6 +75,15 @@ cooking:
           options:
               dictionary:
                   age_group_1year: age
+          result: unpop-entities-age-1
+        - procedure: translate_column
+          ingredients:
+            - unpop-entities-age-1
+          options:
+            column: age
+            dictionary:
+              "100plus": "100"
+            not_found: include
           result: unpop-entities-age-final
         - procedure: translate_header
           ingredients:

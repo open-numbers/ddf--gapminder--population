@@ -11,7 +11,7 @@ config:
     recipes_dir: ./
 
 ingredients:
-    - id: unpop-datapoints-pop-by-country-age
+    - id: unpop-datapoints-pop-by-country-age_
       dataset: *un_pop
       key: age_group_1year, country_area, time
       value:
@@ -33,6 +33,15 @@ ingredients:
 
 cooking:
     datapoints:
+        - procedure: translate_column
+          ingredients:
+            - unpop-datapoints-pop-by-country-age_
+          options:
+            column: age_group_1year
+            dictionary:
+              "100plus": "100"
+            not_found: include
+          result: unpop-datapoints-pop-by-country-age
         - procedure: run_op
           ingredients:
               - unpop-datapoints-pop-by-country-age
