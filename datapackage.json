@@ -11,9 +11,9 @@
         "open-numbers/ddf--unpop--world_population_prospects",
         "open-numbers/ddf--open_numbers"
     ],
+    "created": "2024-07-18T12:29:25.714805+00:00",
     "id": "ddf--gapminder--population",
     "version": 0.1,
-    "created": "2024-07-17T03:38:12.707170+00:00",
     "resources": [
         {
             "name": "ddf--concepts",
@@ -39,16 +39,16 @@
                         "name": "domain"
                     },
                     {
-                        "name": "source_url"
-                    },
-                    {
-                        "name": "tags"
+                        "name": "drill_up"
                     },
                     {
                         "name": "scales"
                     },
                     {
-                        "name": "drill_up"
+                        "name": "source_url"
+                    },
+                    {
+                        "name": "tags"
                     },
                     {
                         "name": "description"
